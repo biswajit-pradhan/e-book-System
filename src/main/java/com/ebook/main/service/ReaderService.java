@@ -1,6 +1,7 @@
 package com.ebook.main.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,19 @@ public class ReaderService {
 		return book;
 	}
 
+	public List<Reader> getAllReaders() {
+		return readerRepository.findAll();
+	}
 
-	
+	public Optional<Reader> getReaderById(int rid) {
+		return readerRepository.findById(rid);
+	}
+
+	public void udateReaderById(Reader reader) {
+		readerRepository.save(reader);
+	}
+
+	public void deleteReaderById(int rid) {
+		readerRepository.deleteById(rid);
+	}
 }
