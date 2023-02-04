@@ -1,9 +1,16 @@
 package com.ebook.main.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +28,38 @@ public class BookController {
 	public ResponseEntity<String> addBook(@RequestBody Book book) {
 		bookService.addBook(book);
 		return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
+	}
+	
+	@GetMapping("/getall")
+	public List<Book> getAllBook() {
+		List<Book> list = bookService.getAllBook();
+		return list;
+	}
+	
+	@GetMapping("/getone/{bid}")
+	public ResponseEntity<Object> getBookById(@PathVariable("bid") int bid) {
+		Optional<Book> optional = bookService.getBookById(bid);
+		if (!optional.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+		Book book = optional.get();
+		return ResponseEntity.status(HttpStatus.OK).body(book);
+	}
+	
+	@PutMapping("/update/{bid}")
+	public ResponseEntity<String> updateBook(@RequestBody Book ubook,@PathVariable("bid") int bid) {
+		Optional<Book> optional = bookService.getBookById(bid);
+		if (!optional.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+		bookService.updateBook(ubook,bid);
+		return ResponseEntity.status(HttpStatus.OK).body("Book updated Successfully");
+	}
+	
+	@DeleteMapping("/delete/{bid}")
+	public ResponseEntity<String> deleteBookById(@PathVariable("bid") int bid) {
+		Optional<Book> optional = bookService.getBookById(bid);
+		if (!optional.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+		bookService.deleteBookById(bid);
+		return ResponseEntity.status(HttpStatus.OK).body("Book deleted");
 	}
 }
