@@ -25,20 +25,20 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
-	@PostMapping("/add")
+	@PostMapping("/addbook")
 	public ResponseEntity<String> addBook(@RequestBody Book book) {
 		bookService.addBook(book);
 		return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
 	}
 	
 	
-	@GetMapping("/getall")
+	@GetMapping("/getallbooks")
 	public List<Book> getAllBook() {
 		List<Book> list = bookService.getAllBook();
 		return list;
 	}
 	
-	@GetMapping("/getone/{bid}")
+	@GetMapping("/getonebook/{bid}")
 	public ResponseEntity<Object> getBookById(@PathVariable("bid") int bid) {
 		Optional<Book> optional = bookService.getBookById(bid);
 		if (!optional.isPresent())
@@ -47,7 +47,7 @@ public class BookController {
 		return ResponseEntity.status(HttpStatus.OK).body(book);
 	}
 	
-	@PutMapping("/update/{bid}")
+	@PutMapping("/updatebook/{bid}")
 	public ResponseEntity<String> updateBook(@RequestBody Book ubook,@PathVariable("bid") int bid) {
 		Optional<Book> optional = bookService.getBookById(bid);
 		if (!optional.isPresent())
@@ -56,7 +56,7 @@ public class BookController {
 		return ResponseEntity.status(HttpStatus.OK).body("Book updated Successfully");
 	}
 	
-	@DeleteMapping("/delete/{bid}")
+	@DeleteMapping("/deletebook/{bid}")
 	public ResponseEntity<String> deleteBookById(@PathVariable("bid") int bid) {
 		Optional<Book> optional = bookService.getBookById(bid);
 		if (!optional.isPresent())

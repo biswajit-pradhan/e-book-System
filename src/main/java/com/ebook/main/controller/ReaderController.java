@@ -57,7 +57,7 @@ public class ReaderController {
 		Optional<Reader> optional = readerService.getReaderById(rid);
 		if(!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid reader Id given");
-		Reader reader = optional.get();//hear we are using same optional to get and do work on reader
+		Reader reader = optional.get();//here we are using same optional to get and do work on reader
 		return ResponseEntity.status(HttpStatus.OK).body(reader);
 	}
 	@PutMapping("/update/{rid}")
