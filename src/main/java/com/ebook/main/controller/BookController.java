@@ -21,14 +21,16 @@ import com.ebook.main.service.BookService;
 @RestController
 @RequestMapping("api/book")
 public class BookController {
+	
 	@Autowired
 	private BookService bookService;
-	
+
 	@PostMapping("/add")
 	public ResponseEntity<String> addBook(@RequestBody Book book) {
 		bookService.addBook(book);
 		return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
 	}
+	
 	
 	@GetMapping("/getall")
 	public List<Book> getAllBook() {
