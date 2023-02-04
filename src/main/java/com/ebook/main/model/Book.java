@@ -1,6 +1,5 @@
 package com.ebook.main.model;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,22 +16,36 @@ public class Book {
 	private String name;
 	private double price;
 	private double version;
-	private String author;
+	
+	private String authorName;
 	public Book() {}
 	
-	public Book(int id, String name, double price, double version, String author) {
+
+	public Book(int id, String name, double price, double version, String authorName) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.version = version;
-		this.author = author;
+		this.authorName = authorName;
 	}
-	
+
+
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", price=" + price + ", version=" + version + ", author=" + author
-				+ "]";
+		return "Book [id=" + id + ", name=" + name + ", price=" + price + ", version=" + version + ", authorName="
+				+ authorName + "]";
+	}
+
+
+	public String getAuthorName() {
+		return authorName;
+	}
+
+
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public int getId() {
@@ -59,11 +72,6 @@ public class Book {
 	public void setVersion(double version) {
 		this.version = version;
 	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+
 	
 }
