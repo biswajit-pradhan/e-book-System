@@ -16,8 +16,8 @@ public class Book {
 	private String name;
 	private double price;
 	private double version;
-	
 	private String authorName;
+	
 	public Book() {}
 	
 
