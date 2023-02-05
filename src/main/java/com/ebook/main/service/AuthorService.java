@@ -1,5 +1,8 @@
 package com.ebook.main.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,27 @@ public class AuthorService {
 	
 	public void addAuthor(Author author) {
 		authorRepository.save(author);
+		
+	}
+	public Optional<Author> getAuthorById(int id) {
+		Optional<Author> optional = authorRepository.findById(id);
+		return optional;
+	}
+
+	public List<Author> getAllAuthor() {
+		
+		return authorRepository.findAll();
+	}
+
+	
+
+	public void updateAuthor(Author author) {
+		authorRepository.save(author);
+		
+	}
+
+	public void deleteAuthor(int id) {
+		authorRepository.deleteById(id);
 		
 	}
 
