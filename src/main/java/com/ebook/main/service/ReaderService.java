@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
+import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
 import com.ebook.main.repository.ReaderRepository;
 
@@ -44,5 +46,16 @@ public class ReaderService {
 
 	public void deleteReaderById(int rid) {
 		readerRepository.deleteById(rid);
+	}
+
+	public List<Book> getBooksByPublisherName(List<Publisher> publisherBook) {
+		List<Book> bookData=publisherBook.stream().map(p->p.getBook()).collect(Collectors.toList());
+		return bookData;
+	}
+
+	public List<Book> getBooksByAuthorName(List<Author> authorBook) {
+		
+		List<Book> bookData=authorBook.stream().map(p->p.getBook()).collect(Collectors.toList());
+		return bookData;
 	}
 }

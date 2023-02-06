@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
+import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
 import com.ebook.main.service.ReaderService;
 
@@ -29,6 +31,12 @@ public class ReaderController {
 	
 	@Autowired
 	private BookController bookController;
+	
+	@Autowired
+	private PublisherController publisherController;
+	
+	@Autowired
+	private AuthorController authorController;
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addReader(@RequestBody Reader reader){
@@ -47,6 +55,27 @@ public class ReaderController {
 		List<Book> bookData=readerService.getBookByBookName(bName);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
+	
+	@GetMapping("/booksByPublisherName/{pName}")
+	public ResponseEntity<Object> getBooksByPublisherName(@PathVariable("pName") String pName){
+		
+		List<Publisher> publisherBook=publisherController.getAllPublisher().stream().filter(p->p.getName().equalsIgnoreCase(pName)).collect(Collectors.toList());
+		if(publisherBook.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+		List<Book> bookData=readerService.getBooksByPublisherName(publisherBook);
+		return ResponseEntity.status(HttpStatus.OK).body(bookData);
+	}
+	
+	@GetMapping("/booksByAuthorName/{aName}")
+	public ResponseEntity<Object> getBooksByAuthorName(@PathVariable("aName") String aName){
+		
+		List<Author> authorBook=authorController.getAllAuthor().stream().filter(a->a.getName().equals(aName)).collect(Collectors.toList());
+		if(authorBook.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+		List<Book> bookData=readerService.getBooksByAuthorName(authorBook);
+		return ResponseEntity.status(HttpStatus.OK).body(bookData);
+	}
+	
 	@GetMapping("/allreaders")
 	public List<Reader> getAllReaders() {
 		List<Reader> list = readerService.getAllReaders();
