@@ -11,6 +11,8 @@ import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
+import com.ebook.main.model.ReaderBook;
+import com.ebook.main.repository.ReaderBookRepository;
 import com.ebook.main.repository.ReaderRepository;
 
 @Service
@@ -21,6 +23,9 @@ public class ReaderService {
 	
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private ReaderBookRepository readerBookRepository;
 	
 	public void addReader(Reader reader) {
 		readerRepository.save(reader);
@@ -56,6 +61,12 @@ public class ReaderService {
 	public List<Book> getBooksByAuthorName(List<Author> authorBook) {
 		
 		List<Book> bookData=authorBook.stream().map(p->p.getBook()).collect(Collectors.toList());
+		return bookData;
+	}
+
+	public List<Book> booksPurchasedByReaderId(int rid) {
+		List<ReaderBook> readerBookData = readerBookRepository.findAll();
+		List<Book> bookData = readerBookData.stream().filter((e->e.getReader().getId()==rid)).map(e->e.getBook()).collect(Collectors.toList());
 		return bookData;
 	}
 }

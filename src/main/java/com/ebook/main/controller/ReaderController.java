@@ -76,6 +76,15 @@ public class ReaderController {
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
 	
+	@GetMapping("/booksPurchasedByReaderId/{rid}")
+	public ResponseEntity<Object> booksPurchasedByReaderId(@PathVariable ("rid") int rid){
+			Optional<Reader> optional = readerService.getReaderById(rid);
+			if(!optional.isPresent())
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid reader Id given");
+			List<Book> booksPurchased =  readerService.booksPurchasedByReaderId(rid);
+			return ResponseEntity.status(HttpStatus.OK).body(booksPurchased);
+	}
+	
 	@GetMapping("/allreaders")
 	public List<Reader> getAllReaders() {
 		List<Reader> list = readerService.getAllReaders();
