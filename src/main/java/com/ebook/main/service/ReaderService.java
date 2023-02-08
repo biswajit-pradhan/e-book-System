@@ -1,5 +1,6 @@
 package com.ebook.main.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -68,5 +69,27 @@ public class ReaderService {
 		List<ReaderBook> readerBookData = readerBookRepository.findAll();
 		List<Book> bookData = readerBookData.stream().filter((e->e.getReader().getId()==rid)).map(e->e.getBook()).collect(Collectors.toList());
 		return bookData;
+	}
+
+	public int totalRentByReaderId(int rid) {
+		List<ReaderBook> readerBookData = readerBookRepository.findAll();
+		List<Double> priceList = readerBookData.stream().filter((e->e.getReader().getId()==rid)).map(e->e.getBook().getPrice()).collect(Collectors.toList());
+		List<Integer> borrowingDaysList = readerBookData.stream().filter(e->e.getReader().getId()==rid).map(e->e.getBorrowingDays()).collect(Collectors.toList());
+		double rentSum = 0;
+		for(int i=0;i<priceList.size();i++) {
+			if(borrowingDaysList.get(i)<=0)
+				rentSum += 0;
+			else if(borrowingDaysList.get(i)<=7)
+				rentSum += (priceList.get(i)*10/100);
+			else if(borrowingDaysList.get(i)<=14)
+				rentSum += (priceList.get(i)*15/100);
+			else if(borrowingDaysList.get(i)<=21)
+				rentSum += (priceList.get(i)*20/100);
+			else if(borrowingDaysList.get(i)<=30)
+				rentSum += (priceList.get(i)*25/100);
+			else
+				rentSum += (priceList.get(i)*50/100);
+		}
+		return (int)rentSum;
 	}
 }
