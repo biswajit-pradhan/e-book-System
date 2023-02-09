@@ -1,8 +1,7 @@
 package com.ebook.main.controller;
-
+import java.lang.Object;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ebook.main.model.Author;
+import com.ebook.main.model.Book;
 import com.ebook.main.service.AuthorService;
+
 
 @RestController
 @RequestMapping("api/author")
@@ -60,4 +60,16 @@ public class AuthorController {
 	authorService.deleteAuthor(id);
 		return ResponseEntity.status(HttpStatus.OK).body("Author deleted from database");
 	}
+	
+	/* GetBooks By AuthorId */
+	@GetMapping("/books/{id}")
+	public ResponseEntity<Object> getBookbyAuthorId(@PathVariable("id")int id){
+		List<Book>list= authorService.getBookByAuthorId(id);
+		if(list.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid AuthorId given");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(list);
+	}
+	
+	
 }
