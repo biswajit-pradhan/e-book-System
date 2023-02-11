@@ -32,7 +32,10 @@ public class BookService {
 		book.setAuthorName(ubook.getAuthorName());
 		book.setName(ubook.getName());
 		book.setPrice(ubook.getPrice());
-		book.setVersion(ubook.getVersion());
+		book.setBookCategory(ubook.getBookCategory());
+		book.setBookLanguage(ubook.getBookLanguage());
+		book.setPublishingYear(ubook.getPublishingYear());
+		book.setBookLink(ubook.getBookLink());
 		bookRepository.save(book);
 	}
 
