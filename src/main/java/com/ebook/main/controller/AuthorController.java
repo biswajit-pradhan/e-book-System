@@ -72,7 +72,8 @@ public class AuthorController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
-		
+	
+	/*getBooksOnRentByAuthorName*/
 	@GetMapping("/getbooksonrentbyauthorname/{aName}")
 	public ResponseEntity<Object> getBooksOnRentByAuthorName(@PathVariable("aName") String aName){
 		List<Author> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName)).collect(Collectors.toList());
