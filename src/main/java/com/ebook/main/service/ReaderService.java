@@ -11,6 +11,8 @@ import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
+import com.ebook.main.model.ReaderBook;
+import com.ebook.main.repository.ReaderBookRepository;
 import com.ebook.main.repository.ReaderRepository;
 
 @Service
@@ -21,6 +23,9 @@ public class ReaderService {
 	
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private ReaderBookRepository readerBookRepository;
 	
 	public void addReader(Reader reader) {
 		readerRepository.save(reader);
@@ -57,5 +62,33 @@ public class ReaderService {
 		
 		List<Book> bookData=authorBook.stream().map(p->p.getBook()).collect(Collectors.toList());
 		return bookData;
+	}
+
+	public List<Book> booksPurchasedByReaderId(int rid) {
+		List<ReaderBook> readerBookData = readerBookRepository.findAll();
+		List<Book> bookData = readerBookData.stream().filter((e->e.getReader().getId()==rid)).map(e->e.getBook()).collect(Collectors.toList());
+		return bookData;
+	}
+
+	public int totalRentByReaderId(int rid) {
+		List<ReaderBook> readerBookData = readerBookRepository.findAll();
+		List<Double> priceList = readerBookData.stream().filter((e->e.getReader().getId()==rid)).map(e->e.getBook().getPrice()).collect(Collectors.toList());
+		List<Integer> borrowingDaysList = readerBookData.stream().filter(e->e.getReader().getId()==rid).map(e->e.getBorrowingDays()).collect(Collectors.toList());
+		double rentSum = 0;
+		for(int i=0;i<priceList.size();i++) {
+			if(borrowingDaysList.get(i)<=0)
+				rentSum += 0;
+			else if(borrowingDaysList.get(i)<=7)
+				rentSum += (priceList.get(i)*10/100);
+			else if(borrowingDaysList.get(i)<=14)
+				rentSum += (priceList.get(i)*15/100);
+			else if(borrowingDaysList.get(i)<=21)
+				rentSum += (priceList.get(i)*20/100);
+			else if(borrowingDaysList.get(i)<=30)
+				rentSum += (priceList.get(i)*25/100);
+			else
+				rentSum += (priceList.get(i)*50/100);
+		}
+		return (int)rentSum;
 	}
 }
