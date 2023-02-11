@@ -2,17 +2,23 @@ package com.ebook.main.service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.repository.AuthorRepository;
+import com.ebook.main.repository.ReaderBookRepository;
 
 @Service
 public class AuthorService {
 
 	@Autowired
 	private AuthorRepository authorRepository;
+	
+	@Autowired
+	private ReaderBookRepository readerBookRepository;
 	
 	public void addAuthor(Author author) {
 		authorRepository.save(author);
@@ -46,6 +52,17 @@ public class AuthorService {
 		List<Book> filteredList=list.stream().filter(e->e.getId()==id)
 													.map(e->e.getBook()).collect(Collectors.toList());
 		return filteredList;
+	}
+	
+	public List<Book> getBooksOnRentByAuthorName(List<Author> authorBooks) {
+		
+		List<Integer> bookIdsByAuthorName=authorBooks.stream().map(ab->ab.getBook().getId()).collect(Collectors.toList());		
+		
+		List<Book> bookData=readerBookRepository.findAll().stream()
+				.map(rb->rb.getBook()).filter(b->bookIdsByAuthorName.contains(b.getId()))
+				.collect(Collectors.toList());
+		
+		return bookData;
 	}
 
 }
