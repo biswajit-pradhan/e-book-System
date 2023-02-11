@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.service.AuthorService;
+import com.ebook.main.service.BookService;
 
 
 @RestController
@@ -29,6 +30,9 @@ public class AuthorController {
 	
 	@Autowired
 	private BookController bookController;
+	
+	@Autowired
+	private BookService bookService;
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addAuthor(@RequestBody Author author) {
@@ -72,8 +76,9 @@ public class AuthorController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
-		
-	@GetMapping("/getbooksonrentbyauthorname/{aName}")
+	
+	/*getBooksOnRentByAuthorName*/
+	@GetMapping("/getBooksOnRentByAuthorName/{aName}")
 	public ResponseEntity<Object> getBooksOnRentByAuthorName(@PathVariable("aName") String aName){
 		List<Author> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName)).collect(Collectors.toList());
 		if(authorBooks.isEmpty())
@@ -81,6 +86,10 @@ public class AuthorController {
 		List<Book> bookData=authorService.getBooksOnRentByAuthorName(authorBooks);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
+	
+	
+	
+	
 	
 	
 }

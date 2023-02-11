@@ -61,7 +61,6 @@ public class AuthorService {
 		List<Book> bookData=readerBookRepository.findAll().stream()
 				.map(rb->rb.getBook()).filter(b->bookIdsByAuthorName.contains(b.getId()))
 				.collect(Collectors.toList());
-		
 		return bookData;
 	}
 
