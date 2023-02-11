@@ -86,4 +86,10 @@ public class AuthorController {
 		List<Book> bookData=authorService.getBooksOnRentByAuthorName(authorBooks);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
+	
+	
+	
+	
+	
+	
 }
