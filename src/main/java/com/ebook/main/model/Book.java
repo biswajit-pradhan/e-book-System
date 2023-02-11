@@ -13,65 +13,103 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
+	public enum bookCategories {
+		FICTION, NONFICTION, TECHNOLOGY,SCIENCE,HISTORY,BUSINESS 
+	}
+	
 	private String name;
 	private double price;
-	private double version;
 	private String authorName;
-	
-	public Book() {}
-	
+	private int publishingYear;
+	private String bookLanguage;
+	private bookCategories bookCategory;
+	private String bookLink;
 
-	public Book(int id, String name, double price, double version, String authorName) {
+	public Book() {}
+
+	public Book(int id, String name, double price, String authorName, int publishingYear, String bookLanguage,
+			bookCategories bookCategory, String bookLink) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
-		this.version = version;
 		this.authorName = authorName;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", price=" + price + ", version=" + version + ", authorName="
-				+ authorName + "]";
-	}
-
-
-	public String getAuthorName() {
-		return authorName;
-	}
-
-
-
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+		this.publishingYear = publishingYear;
+		this.bookLanguage = bookLanguage;
+		this.bookCategory = bookCategory;
+		this.bookLink = bookLink;
 	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public double getVersion() {
-		return version;
-	}
-	public void setVersion(double version) {
-		this.version = version;
+
+	public String getAuthorName() {
+		return authorName;
 	}
 
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public int getPublishingYear() {
+		return publishingYear;
+	}
+
+	public void setPublishingYear(int publishingYear) {
+		this.publishingYear = publishingYear;
+	}
+
+	public String getBookLanguage() {
+		return bookLanguage;
+	}
+
+	public void setBookLanguage(String bookLanguage) {
+		this.bookLanguage = bookLanguage;
+	}
+
+	public bookCategories getBookCategory() {
+		return bookCategory;
+	}
+
+	public void setBookCategory(bookCategories bookCategory) {
+		this.bookCategory = bookCategory;
+	}
+
+	public String getBookLink() {
+		return bookLink;
+	}
+
+	public void setBookLink(String bookLink) {
+		this.bookLink = bookLink;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", price=" + price + ", authorName=" + authorName
+				+ ", publishingYear=" + publishingYear + ", bookLanguage=" + bookLanguage + ", bookCategory="
+				+ bookCategory + ", bookLink=" + bookLink + "]";
+	}
+	
 	
 }
