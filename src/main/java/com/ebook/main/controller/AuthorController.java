@@ -1,7 +1,8 @@
 package com.ebook.main.controller;
-import java.lang.Object;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.service.AuthorService;
@@ -69,6 +71,15 @@ public class AuthorController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid AuthorId given");
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(list);
+	}
+		
+	@GetMapping("/getbooksonrentbyauthorname/{aName}")
+	public ResponseEntity<Object> getBooksOnRentByAuthorName(@PathVariable("aName") String aName){
+		List<Author> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName)).collect(Collectors.toList());
+		if(authorBooks.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+		List<Book> bookData=authorService.getBooksOnRentByAuthorName(authorBooks);
+		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
 	
 	
