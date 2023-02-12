@@ -82,6 +82,9 @@ public class AuthorController {
 		if(authorBooks.isEmpty())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
 		List<Book> bookData=authorService.getBooksOnRentByAuthorName(authorBooks);
+		if(bookData.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Books Are On Rent For You!!");
+		}
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
 	
