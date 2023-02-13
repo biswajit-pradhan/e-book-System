@@ -27,13 +27,19 @@ public class ReaderBookController {
 	
 	@PostMapping("/add/{rid}/{bid}")
 	public ResponseEntity<Object> addReaderBook(@RequestBody ReaderBook readerBook,@PathVariable("rid") int rid,@PathVariable("bid") int bid) {
-		
+		List<ReaderBook> allData=readerBookService.getAllReaderBook();
 		int borrowingDays=readerBook.getBorrowingDays();
 		long millis=System.currentTimeMillis();
 		Date assignedDate=new Date(millis);/*Getting local date for assign the reader*/
 		Calendar calender = Calendar.getInstance(); 
 		calender.add(Calendar.DAY_OF_MONTH, borrowingDays);
 		Date lastDate=new Date(calender.getTimeInMillis());/*Getting last day from today*/
+		
+		for(ReaderBook rb:allData) {
+			if(rb.getReader().getId()==rid && rb.getBook().getId()==bid && rb.getLastDate().compareTo(assignedDate)>=0) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This book is already assigned to this reader for "+rb.getBorrowingDays()+" days!! Try again after "+rb.getLastDate());
+			}
+		}
 		
 		
 		readerBook.setAssignedDate(assignedDate);/*Storing borrow date for reader*/
