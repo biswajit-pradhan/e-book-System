@@ -47,7 +47,7 @@ public class PublisherController {
 	{
 		Optional<Publisher> optional = publisherService.getPublisherById(id);
 		if(!optional.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Publisher ID given");
 		Publisher publisher = optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(publisher);
 	}
@@ -58,7 +58,10 @@ public class PublisherController {
 	}
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deletePublisher(@PathVariable("id") int id){
-	publisherService.deletePublisher(id);
+		Optional<Publisher> optional = publisherService.getPublisherById(id);
+		if(!optional.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Publisher ID given");
+		publisherService.deletePublisher(id);
 		return ResponseEntity.status(HttpStatus.OK).body("publisher deleted from database");
 	}
 	
@@ -66,7 +69,7 @@ public class PublisherController {
 	/*Get book by Publisher Id*/
 	@GetMapping("/publisher/{pid}")
 	public ResponseEntity<Object> getBookbyPublisherId(@PathVariable("pid")int pid){
-		List<Book>list= publisherService.getBookByPublisherId(pid);
+		List<Book> list= publisherService.getBookByPublisherId(pid);
 		if(list.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID Not Valid");
 		}

@@ -2,6 +2,7 @@ package com.ebook.main.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,12 @@ public class BookService {
 	public void deleteBookById(int bid) {
 		bookRepository.deleteById(bid);
 		
+	}
+
+	public List<Book> lastFiveBooksAddedToDB() {
+		
+		List<Book> book=bookRepository.findAll().stream().sorted((b1,b2)->b2.getId()-b1.getId()).limit(5).collect(Collectors.toList());
+		return book;
 	}
 
 }

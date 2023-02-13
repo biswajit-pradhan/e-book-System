@@ -3,6 +3,7 @@ package com.ebook.main.controller;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ebook.main.model.Book;
+import com.ebook.main.model.Reader;
 import com.ebook.main.model.ReaderBook;
+import com.ebook.main.repository.BookRepository;
+import com.ebook.main.repository.ReaderRepository;
 import com.ebook.main.service.ReaderBookService;
 
 @RestController
@@ -25,8 +29,26 @@ public class ReaderBookController {
 	@Autowired
 	private ReaderBookService readerBookService;
 	
+	@Autowired
+	private ReaderRepository readerRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
+	
 	@PostMapping("/add/{rid}/{bid}")
 	public ResponseEntity<Object> addReaderBook(@RequestBody ReaderBook readerBook,@PathVariable("rid") int rid,@PathVariable("bid") int bid) {
+		
+		Optional<Reader> optionalReader=readerRepository.findById(rid);
+		if(!optionalReader.isPresent()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Reader Id Given");
+		}
+		
+		Optional<Book> optionalBook=bookRepository.findById(bid);
+		if(!optionalBook.isPresent()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Book Id Given");
+		}
+		
+		
 		List<ReaderBook> allData=readerBookService.getAllReaderBook();
 		int borrowingDays=readerBook.getBorrowingDays();
 		long millis=System.currentTimeMillis();
@@ -56,5 +78,20 @@ public class ReaderBookController {
 	}
 	
 	
+	@GetMapping("/getBooksByReaderId/{rid}")
+	public ResponseEntity<Object> getBooksByReaderId(@PathVariable("rid") int rid){
+		Optional<Reader> optional=readerRepository.findById(rid);
+		if(!optional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Reader Id Given");
+		}
+		
+		List<Book> book=readerBookService.getBooksByReaderId(rid);
+		
+		if(book.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This Reader Does Not Have Any Book To Read");
+		}
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(book);
+	}
 	
 }
