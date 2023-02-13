@@ -66,5 +66,9 @@ public class ReaderBookService {
 		
 		return book;
 	}
+
+	public List<ReaderBook> getAllReaderBook() {
+		return readerBookRepository.findAll();
+	}
 	
 }
