@@ -1,10 +1,8 @@
 package com.ebook.main.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,14 +59,20 @@ public class ReaderBookService {
 		List<Book> book=readerBook.stream().map(rb->rb.getBook()).limit(5)
 				.collect(Collectors.toList());
 		
-		Set<Book> set=new HashSet<>(book);
-		book=new ArrayList<>(set);
-		
 		return book;
 	}
 
 	public List<ReaderBook> getAllReaderBook() {
 		return readerBookRepository.findAll();
+	}
+
+	public List<Book> getBooksByReaderId(int rid) {
+		
+		List<Book> book=getAllReaderBook().stream().filter(rb->rb.getReader().getId()==rid)
+							.map(rb->rb.getBook()).collect(Collectors.toList());
+		
+		
+		return book;
 	}
 	
 }

@@ -51,7 +51,7 @@ public class BookController {
 	public ResponseEntity<String> updateBook(@RequestBody Book ubook,@PathVariable("bid") int bid) {
 		Optional<Book> optional = bookService.getBookById(bid);
 		if (!optional.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Book Id Given");
 		bookService.updateBook(ubook,bid);
 		return ResponseEntity.status(HttpStatus.OK).body("Book updated Successfully");
 	}
@@ -64,4 +64,18 @@ public class BookController {
 		bookService.deleteBookById(bid);
 		return ResponseEntity.status(HttpStatus.OK).body("Book deleted");
 	}	
+	
+	@GetMapping("/lastFiveBooksAddedToDB")
+	public ResponseEntity<Object> lastFiveBooksAddedToDB(){
+		
+		List<Book> book=bookService.lastFiveBooksAddedToDB();
+		return ResponseEntity.status(HttpStatus.OK).body(book);
+	}
+	
+	
+	
+	
+	
+	
+	
 }
