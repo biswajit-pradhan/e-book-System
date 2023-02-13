@@ -63,5 +63,5 @@ public class BookController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
 		bookService.deleteBookById(bid);
 		return ResponseEntity.status(HttpStatus.OK).body("Book deleted");
-	}
+	}	
 }

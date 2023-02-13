@@ -29,6 +29,7 @@ public class AuthorController {
 	
 	@Autowired
 	private BookController bookController;
+
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addAuthor(@RequestBody Author author) {
@@ -72,15 +73,37 @@ public class AuthorController {
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(list);
 	}
-		
-	@GetMapping("/getbooksonrentbyauthorname/{aName}")
+	
+	/*getBooksOnRentByAuthorName*/
+	@GetMapping("/getBooksOnRentByAuthorName/{aName}")
 	public ResponseEntity<Object> getBooksOnRentByAuthorName(@PathVariable("aName") String aName){
-		List<Author> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName)).collect(Collectors.toList());
+		List<Author> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName))
+								  .collect(Collectors.toList());
 		if(authorBooks.isEmpty())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
 		List<Book> bookData=authorService.getBooksOnRentByAuthorName(authorBooks);
+		if(bookData.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Books Are On Rent For You!!");
+		}
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
+	
+	@GetMapping("/authorShareOnIndividualBookRent/{aName}/{bid}")
+	public ResponseEntity<Object> authorShareOnIndividualBookRent(@PathVariable("aName") String aName,@PathVariable("bid") int bid){
+		List<Book> authorBooks=getAllAuthor().stream().filter(a->a.getName().equalsIgnoreCase(aName))
+									.map(a->a.getBook())
+								  .collect(Collectors.toList());
+		if(authorBooks.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Author Name Given");
+		List<Book> totalBooks=authorBooks.stream().filter(b->b.getId()==bid).collect(Collectors.toList());
+		if(totalBooks.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Author does not have any book with this BookID!!");
+		}
+		double authorShare=authorService.authorShareOnIndividualBookRent(bid);
+		return ResponseEntity.status(HttpStatus.OK).body(authorShare);
+	}
+	
+	
 	
 	
 }

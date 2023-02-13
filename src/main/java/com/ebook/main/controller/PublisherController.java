@@ -2,7 +2,7 @@ package com.ebook.main.controller;
 
 import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.service.PublisherService;
 
@@ -61,4 +62,47 @@ public class PublisherController {
 		return ResponseEntity.status(HttpStatus.OK).body("publisher deleted from database");
 	}
 	
+
+	/*Get book by Publisher Id*/
+	@GetMapping("/publisher/{pid}")
+	public ResponseEntity<Object> getBookbyPublisherId(@PathVariable("pid")int pid){
+		List<Book>list= publisherService.getBookByPublisherId(pid);
+		if(list.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID Not Valid");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(list);
+
+	}
+	
+	@GetMapping("/getBooksOnRentByPublisherName/{pName}")
+	public ResponseEntity<Object> getBooksOnRentByPublisherName(@PathVariable("pName") String pName){
+		List<Publisher> publisherBooks=getAllPublisher().stream().filter(p->p.getName().equalsIgnoreCase(pName))
+								  .collect(Collectors.toList());
+		if(publisherBooks.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Publisher Name Given");
+		List<Book> bookData=publisherService.getBooksOnRentByPublisherName(publisherBooks);
+		
+		if(bookData.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No Books Are On Rent For You!!");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(bookData);
+	}
+	
+	
+	@GetMapping("/publisherShareOnIndividualBookRent/{pName}/{bid}")
+	public ResponseEntity<Object> publisherShareOnIndividualBookRent(@PathVariable("pName") String pName,@PathVariable("bid") int bid){
+		List<Book> publisherBooks=getAllPublisher().stream().filter(p->p.getName().equalsIgnoreCase(pName))
+									.map(p->p.getBook())
+								  .collect(Collectors.toList());
+		if(publisherBooks.isEmpty())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Publisher Name Given");
+		List<Book> totalBooks=publisherBooks.stream().filter(b->b.getId()==bid).collect(Collectors.toList());
+		if(totalBooks.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Publisher does not have any book with this BookID!!");
+		}
+		double publisherShare=publisherService.publisherShareOnIndividualBookRent(bid);
+		return ResponseEntity.status(HttpStatus.OK).body(publisherShare);
+	}
+	
+
 }
