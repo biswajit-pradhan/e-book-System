@@ -62,6 +62,7 @@ public class PublisherController {
 		return ResponseEntity.status(HttpStatus.OK).body("publisher deleted from database");
 	}
 	
+
 	/*Get book by Publisher Id*/
 	@GetMapping("/publisher/{pid}")
 	public ResponseEntity<Object> getBookbyPublisherId(@PathVariable("pid")int pid){
@@ -103,4 +104,5 @@ public class PublisherController {
 		return ResponseEntity.status(HttpStatus.OK).body(publisherShare);
 	}
 	
+
 }
