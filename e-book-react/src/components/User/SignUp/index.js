@@ -20,8 +20,9 @@ class SignUp extends Component {
     componentDidMount(){}
     render(){
         return (
+            <div>
+                <Navbar/>
             <div id="signup">
-                <h3 className="text-center text-white pt-5">Sign Up Form</h3>
                 <div className="container">
                     <div id="signup-row" className="row justify-content-center align-items-center">
                         <div id="signup-column" className="col-md-6">
@@ -67,6 +68,7 @@ class SignUp extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }
@@ -136,3 +138,4 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {addUserSignUp})(SignUp);
+
