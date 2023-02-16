@@ -1,28 +1,18 @@
-import { Component } from "react"
 import Navbar from "../Navbar";
 import "./style.css"
 
-class Publisher extends Component {
-  state = {
-    addbook: false
-  };
-
-  handleAddBook = () => {
-    this.setState(prevState => ({
-      addbook: !prevState.addbook
-    }));
-  };
-
-  render() {
-    return (
+const Publisher = () => {
+  return (
+    <div>
+      <Navbar />
       <div id="publisher">
         <h3 className="text-center text-white pt-5">Publish Book</h3>
         <div className="container">
           <div id="publisher-row" className="row justify-content-center align-items-center">
             <div id="publisher-column" className="col-md-6">
               <div id="publisher-box" className="col-md-12">
-              
-                <form id="publisher-form" className="form"  action="" method="post">
+
+                <form id="publisher-form" className="form" action="" method="post">
                   <h3 className="text-center text-info">Publish Book</h3>
                   <div className="form-group">
                     <label htmlFor="publisherName" className="text-info">Publisher Name</label><br />
@@ -67,18 +57,16 @@ class Publisher extends Component {
                   <div className="form-group">
                     <br />
                     <input type="submit" name="submit" className="btn btn-info btn-md" value="Submit" />
-                    
+
                   </div>
                 </form>
               </div>
             </div>
-            </div>
           </div>
         </div>
-      
-      
-    )
-  }
+      </div>
+    </div>
+  )
 }
 
 export default Publisher;
