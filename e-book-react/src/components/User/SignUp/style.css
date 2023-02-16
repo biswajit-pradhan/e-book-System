@@ -5,7 +5,7 @@ body {
     height: 100vh;
   }
   #signup .container #signup-row #signup-column #signup-box {
-    margin-top: auto;
+    margin-top: 20px;
     max-width: auto;
     height: auto;
     border: 1px solid #9C9C9C;
