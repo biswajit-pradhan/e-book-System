@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
+import Footer from './components/Footer';
 
 function App() {
   return (

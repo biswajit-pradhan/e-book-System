@@ -3,7 +3,6 @@ import { loginSchema } from "./schema";
 import "./style.css";
 import Navbar from "../../Navbar";
 
-
 const LogIn=()=>{
 
 
