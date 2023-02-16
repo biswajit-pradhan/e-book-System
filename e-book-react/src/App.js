@@ -1,7 +1,7 @@
+import './App.css';
 import { Provider } from "react-redux";
 import {Route, Routes } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
-// import './App.css';
 import Book from "./components/Book";
 import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
@@ -10,7 +10,6 @@ import { store } from "./store";
 
 function App() {
   return (
-
     <div>
       <Provider store={store}>
       <Routes>
