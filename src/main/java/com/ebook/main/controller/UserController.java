@@ -16,7 +16,7 @@ import com.ebook.main.repository.ReaderRepository;
 import com.ebook.main.repository.UserRepository;
 
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -31,18 +31,19 @@ public class UserController {
 	@PostMapping("/signUp")
 	public ResponseEntity<Object> signUp(@RequestBody User user) {
 		User uDB = userRepository.getUserByEmailId(user.getEmailId());
+		Message m = new Message();
 		if(uDB != null) {
-			Message m = new Message();
 			m.setMsg("Email already registered");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
 		}
 		userRepository.save(user);
+		m.setMsg("User Registeration Done");
 		Reader reader = new Reader();
 		if(user.getUserrole().equalsIgnoreCase("READER")) {
 			 
 			reader.setName(user.getUserName());
 		}
 		readerRepository.save(reader);
-		return ResponseEntity.status(HttpStatus.OK).body(reader);
+		return ResponseEntity.status(HttpStatus.OK).body(m);
 		}
 }
