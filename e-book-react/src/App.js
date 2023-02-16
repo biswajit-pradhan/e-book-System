@@ -13,14 +13,14 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-      <Routes>
+      {/* <Routes>
             <Route path="/" element={ <Navbar/>} />
             <Route path="/login" element={ <Login/>} /> 
             <Route path="/signup" element={ <SignUp />} /> 
-          </Routes>
+          </Routes> */}
           {/* <Book/> */}
           {/* <Reader /> */}
-          {/* <SignUp /> */}
+          <SignUp />
            {/* <Route path="/books" element={ <Book/>} /> 
             <Route path="/signup" element={ <SignUp />} />
             <Route path="/aboutUs" element={ <AboutUs />} /> */}

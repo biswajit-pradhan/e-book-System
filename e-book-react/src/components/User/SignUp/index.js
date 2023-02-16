@@ -21,7 +21,6 @@ class SignUp extends Component {
     render(){
         return (
             <div>
-                <Navbar/>
             <div id="signup">
                 <div className="container">
                     <div id="signup-row" className="row justify-content-center align-items-center">
