@@ -9,6 +9,7 @@ import SignUp from './components/User/SignUp';
 import { store } from "./store";
 import Footer from './components/Footer';
 import Reader from './components/Reader';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
+          {/* <Reader/> */}
+          {/* <Book/> */}
+          {/* <Search/> */}
+          {/* <Reader /> */}
         </div>
         <footer className="footer--pin">
           <Footer />

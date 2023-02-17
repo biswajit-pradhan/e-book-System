@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { SearchPost } from "../../action/Search";
 
 export default class Navbar extends Component{
     render(){
@@ -31,7 +32,7 @@ export default class Navbar extends Component{
                                 </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>this.onSearch(e.target.value)}/>
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a>
                             </form>

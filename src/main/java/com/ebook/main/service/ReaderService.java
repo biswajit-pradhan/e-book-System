@@ -32,8 +32,7 @@ public class ReaderService {
 	}
 
 	public List<Book> getBookByBookName(String bName) {
-		List<Book> book = bookService.getAllBook().stream().filter(b->b.getName()
-				.equalsIgnoreCase(bName)).collect(Collectors.toList());
+		List<Book> book = bookService.getAllBook().stream().filter(b->b.getName().toLowerCase().startsWith(bName.toLowerCase())).collect(Collectors.toList());
 		return book;
 	}
 
