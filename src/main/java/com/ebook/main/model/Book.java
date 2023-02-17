@@ -14,7 +14,9 @@ public class Book {
 	private int id;
 	
 	public enum bookCategories {
+
 		FICTION, NONFICTION, TECHNOLOGY,SCIENCE,HISTORY,BUSINESS,GENERAL,STORY,NOVEL
+
 	}
 	
 	private String name;
