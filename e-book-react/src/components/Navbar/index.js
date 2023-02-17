@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { SearchPost } from "../../action/Search";
 
 export default class Navbar extends Component{
     render(){
@@ -13,11 +14,14 @@ export default class Navbar extends Component{
                             <a className="navbar-brand" href="/"><b>eBook</b></a>
                             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="#"><b>About Us</b><span className="sr-only">(current)</span></a>
+                                    <a className="nav-link" href="/aboutUs"><b>About Us</b></a>
+                                </li>
+                                <li className="nav-item active">
+                                    <a className="nav-link" href="/books"><b>Our Books</b></a>
                                 </li>
                                 <li className="nav-item">
-                                    <select className="nav-link">
-                                        <option select="true" value="">Book Category</option>
+                                    <select className="nav-link" defaultValue={"DEFAULT"}>
+                                        <option value="DEFAULT">Book Category</option>
                                         <option value="FICTION">Fiction</option>
                                         <option value="NONFICTION">Non-Fiction</option>
                                         <option value="TECHNOLOGY">Technology</option>
@@ -28,9 +32,9 @@ export default class Navbar extends Component{
                                 </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>this.onSearch(e.target.value)}/>
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                <a className="nav-link" href="/login"><b>Login</b></a>
+                                <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a>
                             </form>
                         </div>
                     </nav>

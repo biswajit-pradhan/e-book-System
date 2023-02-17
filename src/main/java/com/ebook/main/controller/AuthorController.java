@@ -23,6 +23,7 @@ import com.ebook.main.service.AuthorService;
 @CrossOrigin(origins = {"*"})
 
 @RestController
+@CrossOrigin(origins= {"*"})
 @RequestMapping("api/author")
 public class AuthorController {
 	

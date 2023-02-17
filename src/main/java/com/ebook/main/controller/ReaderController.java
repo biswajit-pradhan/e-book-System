@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
 import com.ebook.main.service.ReaderService;
-
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/api/reader")
 public class ReaderController {
@@ -47,10 +48,10 @@ public class ReaderController {
 	
 	@GetMapping("/bookByBookName/{bName}")
 	public ResponseEntity<Object> getBookByBookName(@PathVariable("bName") String bName){
-		List<Book> book = bookController.getAllBook().stream().filter(b->b.getName()
-							.equalsIgnoreCase(bName)).collect(Collectors.toList());
-		if(book.isEmpty())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+//		List<Book> book = bookController.getAllBook().stream().filter(b->b.getName()
+//				.startsWith(bName)).collect(Collectors.toList());
+//		if(book.isEmpty())
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
 		
 		List<Book> bookData=readerService.getBookByBookName(bName);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);

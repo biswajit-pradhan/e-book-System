@@ -14,7 +14,9 @@ public class Book {
 	private int id;
 	
 	public enum bookCategories {
-		FICTION, NONFICTION, TECHNOLOGY,SCIENCE,HISTORY,BUSINESS,BIOGRAPHY 
+
+		FICTION, NONFICTION, TECHNOLOGY,SCIENCE,HISTORY,BUSINESS,GENERAL,STORY,NOVEL
+
 	}
 	
 	private String name;
@@ -24,11 +26,12 @@ public class Book {
 	private String bookLanguage;
 	private bookCategories bookCategory;
 	private String bookLink;
+	private String coverimg;
 
 	public Book() {}
 
 	public Book(int id, String name, double price, String authorName, int publishingYear, String bookLanguage,
-			bookCategories bookCategory, String bookLink) {
+			bookCategories bookCategory, String bookLink, String coverimg) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,6 +41,7 @@ public class Book {
 		this.bookLanguage = bookLanguage;
 		this.bookCategory = bookCategory;
 		this.bookLink = bookLink;
+		this.coverimg=coverimg;
 	}
 
 	public int getId() {
@@ -103,12 +107,21 @@ public class Book {
 	public void setBookLink(String bookLink) {
 		this.bookLink = bookLink;
 	}
+	
+
+	public String getCoverimg() {
+		return coverimg;
+	}
+
+	public void setCoverimg(String coverimg) {
+		this.coverimg = coverimg;
+	}
 
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", price=" + price + ", authorName=" + authorName
 				+ ", publishingYear=" + publishingYear + ", bookLanguage=" + bookLanguage + ", bookCategory="
-				+ bookCategory + ", bookLink=" + bookLink + "]";
+				+ bookCategory + ", bookLink=" + bookLink + ", coverimg=" + coverimg + "]";
 	}
 	
 	

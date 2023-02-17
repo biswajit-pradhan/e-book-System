@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { allBooks } from "../../action/Book";
+import "./style.css";
 
 export class Book extends Component {
     constructor(props) {
@@ -16,11 +17,10 @@ export class Book extends Component {
         return (
             <div>
                 <h1>Books List In DB</h1>
-                <div className="col-lg-9">
-                    <table className="table">
+                    <table className="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">SlNo</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
@@ -51,7 +51,7 @@ export class Book extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
+
         )
     };
 }
