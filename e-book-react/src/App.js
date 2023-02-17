@@ -26,6 +26,10 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
+          {/* <Reader/> */}
+          {/* <Book/> */}
+          {/* <Search/> */}
+          {/* <Reader /> */}
         </div>
         <footer className="footer--pin">
           <Footer />
