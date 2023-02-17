@@ -1,0 +1,8 @@
+.row-data{
+    border: 3px solid;
+    background-color: grey;
+    margin-top: 10px;
+}
+tbody{
+    color: lime;
+}

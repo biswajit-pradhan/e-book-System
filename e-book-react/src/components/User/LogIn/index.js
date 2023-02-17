@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
 import { loginSchema } from "./schema";
 import "./style.css";
-import Navbar from "../../Navbar";
 
 const LogIn=()=>{
 
@@ -27,7 +26,6 @@ const LogIn=()=>{
 
     return (
         <div>
-            <Navbar/>
         <div id="login">
             <div className="container">
                 <div id="login-row" className="row justify-content-center align-items-center">
