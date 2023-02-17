@@ -1,3 +1,4 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import book from "./Book";
-export default combineReducers({book})
+import authorReducer from "./Author";
+export default combineReducers({book,authorReducer})
