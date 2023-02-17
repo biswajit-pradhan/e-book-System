@@ -8,6 +8,7 @@ import Reader from "./components/Reader";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
+import Search from './components/Search';
 
 function App() {
   return (
@@ -20,10 +21,16 @@ function App() {
           </Routes> */}
           {/* <Book/> */}
           {/* <Reader /> */}
-          <SignUp />
-           {/* <Route path="/books" element={ <Book/>} /> 
+          {/* <SignUp /> */}
+          {/* <Login /> */}
+           {/* <Routes>
+           <Route path="/" element={ <Login/>}/>
+           <Route path="/reader" element={ <Reader/>} />
+           <Route path="/books" element={ <Book/>} /> 
             <Route path="/signup" element={ <SignUp />} />
-            <Route path="/aboutUs" element={ <AboutUs />} /> */}
+            <Route path="/aboutUs" element={ <AboutUs />} /> 
+            </Routes> */}
+            <Search />
       </Provider>
     </div>
   );
