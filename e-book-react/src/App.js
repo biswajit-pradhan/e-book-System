@@ -10,6 +10,8 @@ import { store } from "./store";
 import Footer from './components/Footer';
 import Reader from './components/Reader';
 import Search from './components/Search';
+import Author from './components/Author';
+import AddBook from './components/Author/AddBook';
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
+            <Route path="/author" element={<AddBook/>} />
           </Routes>
           {/* <Reader/> */}
           {/* <Book/> */}
