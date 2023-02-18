@@ -18,6 +18,8 @@ export default class Navbar extends Component{
                                 </li>
                                 <li className="nav-item active">
                                     <a className="nav-link" href="/books"><b>Our Books</b></a>
+                                </li><li className="nav-item active">
+                                    <a className="nav-link" href="/search"><b>Search Book</b></a>
                                 </li>
                                 <li className="nav-item">
                                     <select className="nav-link" defaultValue={"DEFAULT"}>
@@ -32,7 +34,8 @@ export default class Navbar extends Component{
                                 </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>this.onSearch(e.target.value)}/>
+                                <a className="nav-link" href="/publisher"><b>Publisher</b> ctr</a>
+                                <a className="nav-link" href="/author"><b>Author</b> ctr</a>
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a>
                             </form>
