@@ -10,6 +10,10 @@ import { store } from "./store";
 import Footer from './components/Footer';
 import Reader from './components/Home';
 import Search from './components/Search';
+import BookByAuthor from './components/Author/BookByAuthor';
+import AddBook from './components/Author/AddBook';
+import AuthorDashboard from './components/Author/AuthorDashboard';
+
 import Logout from './components/User/Logout';
 import Home from './components/Home';
 
@@ -28,14 +32,17 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/logout" element={<Logout/>} />
-          </Routes>
+          </Routes> 
+            {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
+          {/* </Routes> */} 
+          {/* </Routes> */}
           {/* <SignUp /> */}
           {/* <Login /> */}
           {/* <Reader/> */}
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <Reader /> */}
-         
+      
         </div>
         <footer className="footer--pin">
           <Footer />
