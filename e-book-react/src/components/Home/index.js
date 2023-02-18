@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { getAllPublisher } from "../../action/Reader";
-import { getAllAuthor } from "../../action/Reader";
-import {topFiveBooksByBorrowingDays} from "../../action/Reader";
-import {alllatestBook} from "../../action/Reader";
+import { getAllPublisher } from "../../action/Home";
+import { getAllAuthor } from "../../action/Home";
+import {topFiveBooksByBorrowingDays} from "../../action/Home";
+import {alllatestBook} from "../../action/Home";
 import "./style.css";
 
-class Reader extends Component {
+class Home extends Component {
 
     constructor(props) {
         super(props);
@@ -65,7 +65,7 @@ class Reader extends Component {
                                     {
                                         this.props.trendingBooks.list.map((book,index)=>(
                                             <div key={index} className="iamge-item">
-                                                <img src={require('../../coverimages/'+book.coverimg)} alt="info" />
+                                                <img src={require('../../coverimages/'+book.coverimg)}width={195.49} height={300} alt="info" />
                                             </div>
                                         ))
                                     }
@@ -77,7 +77,7 @@ class Reader extends Component {
                                     {
                                         this.props.latestBooks.list.map((book,index)=>(
                                             <div key={index} className="iamge-item">
-                                                <img src={require('../../coverimages/'+book.coverimg)} alt="info" />
+                                                <img src={require('../../coverimages/'+book.coverimg)}width={195.49} height={300} alt="info" />
                                             </div>
                                         ))
                                     }
@@ -98,4 +98,4 @@ function mapStateToProps(state) {
         latestBooks: state.alllatestBook
     };
 }
-export default connect(mapStateToProps, { getAllPublisher, getAllAuthor, topFiveBooksByBorrowingDays, alllatestBook})(Reader); 
+export default connect(mapStateToProps, { getAllPublisher, getAllAuthor, topFiveBooksByBorrowingDays, alllatestBook})(Home); 

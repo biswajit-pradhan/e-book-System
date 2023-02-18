@@ -8,9 +8,10 @@ import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
 import Footer from './components/Footer';
-import Reader from './components/Reader';
+import Reader from './components/Home';
 import Search from './components/Search';
-
+import Logout from './components/User/Logout';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -19,16 +20,17 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          {/* <Routes>
-            <Route path="/" element={<Reader />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
-            <Route path="/author" element={<AddBook/>} />
             <Route path="/logout" element={<Logout/>} />
-          </Routes> */}
+          </Routes>
+          {/* <SignUp /> */}
+          {/* <Login /> */}
           {/* <Reader/> */}
           {/* <Book/> */}
           {/* <Search/> */}
