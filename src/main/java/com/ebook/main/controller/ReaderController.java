@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ebook.main.bto.Message;
 import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
+import com.ebook.main.service.BookService;
 import com.ebook.main.service.ReaderService;
 @CrossOrigin(origins = {"*"})
 @RestController
@@ -29,6 +31,9 @@ public class ReaderController {
 	
 	@Autowired
 	private ReaderService readerService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	@Autowired
 	private BookController bookController;
@@ -48,21 +53,24 @@ public class ReaderController {
 	
 	@GetMapping("/bookByBookName/{bName}")
 	public ResponseEntity<Object> getBookByBookName(@PathVariable("bName") String bName){
-//		List<Book> book = bookController.getAllBook().stream().filter(b->b.getName()
-//				.startsWith(bName)).collect(Collectors.toList());
-//		if(book.isEmpty())
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
-		
+		List<Book> book = bookService.getAllBook().stream().filter(b->b.getName().toLowerCase().startsWith(bName.toLowerCase())).collect(Collectors.toList());
+		Message m = new Message();
+		if(book.isEmpty()) {
+			m.setMsg(" No such book Available");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+		}
 		List<Book> bookData=readerService.getBookByBookName(bName);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
 	
 	@GetMapping("/booksByPublisherName/{pName}")
 	public ResponseEntity<Object> getBooksByPublisherName(@PathVariable("pName") String pName){
-		
-		List<Publisher> publisherBook=publisherController.getAllPublisher().stream().filter(p->p.getName().equalsIgnoreCase(pName)).collect(Collectors.toList());
-		if(publisherBook.isEmpty())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+		List<Publisher> publisherBook=publisherController.getAllPublisher().stream().filter(p->p.getName().toLowerCase().startsWith(pName.toLowerCase())).collect(Collectors.toList());
+		Message m = new Message();
+		if(publisherBook.isEmpty()) {
+			m.setMsg(" Not Matching");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+		}	
 		List<Book> bookData=readerService.getBooksByPublisherName(publisherBook);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
@@ -70,9 +78,12 @@ public class ReaderController {
 	@GetMapping("/booksByAuthorName/{aName}")
 	public ResponseEntity<Object> getBooksByAuthorName(@PathVariable("aName") String aName){
 		
-		List<Author> authorBook=authorController.getAllAuthor().stream().filter(a->a.getName().equals(aName)).collect(Collectors.toList());
-		if(authorBook.isEmpty())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+		List<Author> authorBook=authorController.getAllAuthor().stream().filter(a->a.getName().toLowerCase().startsWith(aName.toLowerCase())).collect(Collectors.toList());
+		Message m = new Message();
+		if(authorBook.isEmpty()) {
+			m.setMsg(" Not Matching");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+		}
 		List<Book> bookData=readerService.getBooksByAuthorName(authorBook);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}

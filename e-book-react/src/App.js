@@ -19,12 +19,12 @@ function App() {
         <div className="content-container">
           <Navbar />
           <Routes>
-
             <Route path="/" element={<Reader />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/search" element={<Search/>} />
           </Routes>
           {/* <Reader/> */}
           {/* <Book/> */}
