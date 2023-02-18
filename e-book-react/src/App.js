@@ -10,6 +10,9 @@ import { store } from "./store";
 import Footer from './components/Footer';
 import Reader from './components/Reader';
 import Search from './components/Search';
+import BookByAuthor from './components/Author/BookByAuthor';
+import AddBook from './components/Author/AddBook';
+import AuthorDashboard from './components/Author/AuthorDashboard';
 
 
 function App() {
@@ -19,19 +22,20 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Reader />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
-          </Routes>
+            <Route path="/author" element={<AuthorDashboard/>}/>
+          </Routes> */}
           {/* <Reader/> */}
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <Reader /> */}
-         
+      
         </div>
         <footer className="footer--pin">
           <Footer />
