@@ -1,4 +1,4 @@
-package com.ebook.main.model;
+package com.ebook.main.bto;
 
 public class Message {
 	private String msg;
