@@ -93,7 +93,7 @@ export class Login extends Component {
           if(this.handleValidation()){
               
               /* Call the API */
-             return this.loginUser(this.state.user);
+            this.loginUser(this.state.user);
           }
           else{
               /* Display error messages */
