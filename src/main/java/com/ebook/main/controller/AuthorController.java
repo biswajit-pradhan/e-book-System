@@ -19,9 +19,6 @@ import com.ebook.main.model.Book;
 import com.ebook.main.model.Message;
 import com.ebook.main.service.AuthorService;
 
-
-@CrossOrigin(origins = {"*"})
-
 @RestController
 @CrossOrigin(origins= {"*"})
 @RequestMapping("api/author")
