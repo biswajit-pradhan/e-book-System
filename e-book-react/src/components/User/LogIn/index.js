@@ -3,6 +3,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
 import Reader from "../../Reader";
+import SignUp from "../SignUp";
+
+
 export class Login extends Component {
     constructor(props) {
       super(props);
@@ -90,7 +93,7 @@ export class Login extends Component {
           if(this.handleValidation()){
               
               /* Call the API */
-             return this.loginUser(this.state.user);
+            this.loginUser(this.state.user);
           }
           else{
               /* Display error messages */

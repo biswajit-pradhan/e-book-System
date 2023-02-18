@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Reader from './components/Reader';
 import Search from './components/Search';
 
+
 function App() {
   return (
     <div>
@@ -30,6 +31,7 @@ function App() {
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <Reader /> */}
+         
         </div>
         <footer className="footer--pin">
           <Footer />
