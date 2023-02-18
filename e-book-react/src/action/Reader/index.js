@@ -7,6 +7,15 @@ export const alllatestBook= () => (dispatch) =>{
          )
 }
 
+export const topFiveBooksByBorrowingDays= () => (dispatch) =>{
+    fetch('http://localhost:8080/api/readerbook/topFiveBooksByBorrowingDays')
+    .then(response=> response.json())
+    .then(data=> dispatch({
+            type: 'GET_TRENDING_BOOK',
+            payload: data})
+         )
+}
+
 export const getAllPublisher= () => (dispatch) =>{
     fetch('http://localhost:8080/api/publisher/allpublisher')
     .then(response=> response.json())

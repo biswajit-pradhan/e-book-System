@@ -3,6 +3,9 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
 import Reader from "../../Reader";
+import SignUp from "../SignUp";
+
+
 export class Login extends Component {
     constructor(props) {
       super(props);
