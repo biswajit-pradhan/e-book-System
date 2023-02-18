@@ -68,7 +68,7 @@ public class ReaderController {
 		List<Publisher> publisherBook=publisherController.getAllPublisher().stream().filter(p->p.getName().toLowerCase().startsWith(pName.toLowerCase())).collect(Collectors.toList());
 		Message m = new Message();
 		if(publisherBook.isEmpty()) {
-			m.setMsg(" Not Matching");
+			m.setMsg(" No Matching");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
 		}	
 		List<Book> bookData=readerService.getBooksByPublisherName(publisherBook);
@@ -81,7 +81,7 @@ public class ReaderController {
 		List<Author> authorBook=authorController.getAllAuthor().stream().filter(a->a.getName().toLowerCase().startsWith(aName.toLowerCase())).collect(Collectors.toList());
 		Message m = new Message();
 		if(authorBook.isEmpty()) {
-			m.setMsg(" Not Matching");
+			m.setMsg(" No Matching");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
 		}
 		List<Book> bookData=readerService.getBooksByAuthorName(authorBook);
