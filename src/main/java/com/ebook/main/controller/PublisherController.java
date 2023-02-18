@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ebook.main.model.Book;
+import com.ebook.main.model.Message;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.service.PublisherService;
 
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("api/publisher")
 public class PublisherController {
@@ -31,11 +34,16 @@ public class PublisherController {
 	private BookController bookController;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> addPublisher(@RequestBody Publisher publisher) {
+	public ResponseEntity<Object> addPublisher(@RequestBody Publisher publisher) {
 		bookController.addBook(publisher.getBook());
 		publisherService.addPublisher(publisher);
-		return ResponseEntity.status(HttpStatus.OK).body("Publisher Added Successfully");
+				
+		Message m = new Message();
+		m.setMsg("Publisher Book Added");
+		return ResponseEntity.status(HttpStatus.OK).body(m);
 	}
+	
+	
 	@GetMapping("/allpublisher")
 	public List<Publisher> getAllPublisher(){
 		List<Publisher> list = publisherService.getAllPublisher();

@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
+import Publisher from "./components/Publisher";
+import PublishBook from "./components/Publisher/publishBook";
+import { BookList } from "./components/Publisher/deleteBook";
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
             <Route path="/login" element={ <Login/>} /> 
             <Route path="/signup" element={ <SignUp />} /> 
           </Routes> */}
-          <Book/>
+          {/* <Book/> */}
+          {/* <Publisher/> */}
+          {/* <PublishBook/> */}
+          <BookList/>
       </Provider>
     </div>
   );
