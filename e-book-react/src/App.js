@@ -10,9 +10,7 @@ import { store } from "./store";
 import Footer from './components/Footer';
 import Reader from './components/Reader';
 import Search from './components/Search';
-import Author from './components/Author';
-import AddBook from './components/Author/AddBook';
-import Logout from './components/User/Logout';
+
 
 function App() {
   return (
@@ -35,6 +33,7 @@ function App() {
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <Reader /> */}
+         
         </div>
         <footer className="footer--pin">
           <Footer />
