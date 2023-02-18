@@ -6,5 +6,5 @@ import allAuthor from "./Reader/allAuthor";
 import userSignUp from "./User/SignUp/Index";
 import login from "./User/LogIn";
 import search from "./Search";
-export default combineReducers({book,allPublisher,allAuthor,userSignUp,login,search})
+export default combineReducers({book,authorReducer,allPublisher,allAuthor,userSignUp,login,search})
 

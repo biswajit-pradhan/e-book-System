@@ -93,7 +93,7 @@ class AddBook extends Component {
                         <option key={4} value="SCIENCE">SCIENCE</option>
                         <option key={5} value="HISTORY">HISTORY</option>
                         <option key={6} value="BUSINESS">BUSINESS</option>
-                        <option key={7} value="BIOGRAPHY">BIOGRAPHY</option>
+                        
                     </select>
                     <span style={{ color : 'red'}}>{this.state.errors['bookCategory']}</span>
                     <br /><br />
