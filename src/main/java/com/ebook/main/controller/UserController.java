@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ebook.main.model.Message;
+import com.ebook.main.bto.Message;
 import com.ebook.main.model.Reader;
 import com.ebook.main.model.User;
 import com.ebook.main.repository.ReaderRepository;
