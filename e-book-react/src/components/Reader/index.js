@@ -2,28 +2,23 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { getAllPublisher } from "../../action/Reader";
 import { getAllAuthor } from "../../action/Reader";
+import {topFiveBooksByBorrowingDays} from "../../action/Reader";
+import {alllatestBook} from "../../action/Reader";
 import "./style.css";
-var listOfImages = [];
 
 class Reader extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            listOfImages: this.importAll(require.context('../../coverimages/', false, /\.(png|jpe?g|svg)$/))
-        };
+        this.state = {};
     }
     componentDidMount() {
         this.props.getAllPublisher();
         this.props.getAllAuthor();
+        this.props.topFiveBooksByBorrowingDays();
+        this.props.alllatestBook();
     }
-
-
-    importAll(r) {
-        return r.keys().map(r);
-    }
-
     render() {
         return (
             <div>
@@ -65,24 +60,24 @@ class Reader extends Component {
                         </div>
                         <div className="col-lg-10">
                             <div className="latestBook">
-                                <div><h4><b>Our Latest Books</b></h4></div>
+                                <div><h4><b>Trending Books</b></h4></div>
                             <div className="image-grid">
                                     {
-                                        this.state.listOfImages.map((image,index)=>(
+                                        this.props.trendingBooks.list.map((book,index)=>(
                                             <div key={index} className="iamge-item">
-                                                <img src={image} alt="info" />
+                                                <img src={require('../../coverimages/'+book.coverimg)} alt="info" />
                                             </div>
                                         ))
                                     }
                             </div>
                             </div>
                             <div className="latestBook">
-                                <div><h4><b>Just Arrived Books</b></h4></div>
+                                <div><h4><b>Latest Books</b></h4></div>
                             <div className="image-grid">
                                     {
-                                        this.state.listOfImages.map((image,index)=>(
+                                        this.props.latestBooks.list.map((book,index)=>(
                                             <div key={index} className="iamge-item">
-                                                <img src={image} alt="info" />
+                                                <img src={require('../../coverimages/'+book.coverimg)} alt="info" />
                                             </div>
                                         ))
                                     }
@@ -98,7 +93,9 @@ class Reader extends Component {
 function mapStateToProps(state) {
     return {
         publishers: state.allPublisher,
-        authors: state.allAuthor
+        authors: state.allAuthor,
+        trendingBooks: state.readerBook,
+        latestBooks: state.alllatestBook
     };
 }
-export default connect(mapStateToProps, { getAllPublisher, getAllAuthor })(Reader); 
+export default connect(mapStateToProps, { getAllPublisher, getAllAuthor, topFiveBooksByBorrowingDays, alllatestBook})(Reader); 
