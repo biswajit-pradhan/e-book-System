@@ -8,7 +8,7 @@ export default class Navbar extends Component{
         this.state = {
           isLoggedIn : false
         };
-        let username = localStorage.getItem('username');
+        let username = localStorage.getItem('userName');
     
         if(username === null || username === undefined) 
               this.setState({isLoggedIn: false})
@@ -17,7 +17,7 @@ export default class Navbar extends Component{
       }
     
       componentDidMount(){
-        let username = localStorage.getItem('username');
+        let username = localStorage.getItem('userName');
     
         if(username === null || username === undefined) 
               this.setState({isLoggedIn: false})

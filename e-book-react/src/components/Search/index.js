@@ -20,7 +20,7 @@ export class Search extends Component {
         //this.props.SearchPost('t');
         //console.log(this.props.SearchPost(value))
         //console.log(this.state.msg)
-        let username = localStorage.getItem('username');
+        let username = localStorage.getItem('userName');
 
     if(username === null || username === undefined) 
           this.setState({isLoggedIn: false})
@@ -36,10 +36,9 @@ export class Search extends Component {
                     <h1>Search a Book</h1>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="ByBookNmae" aria-label="Search" 
-                        onChange={(e) => this.props.SearchByBookNamePost(e.target.value).catch((errors) =>
-                  this.setState({ msg: errors.response.data.msg })
-                )} />
-                        <span style={{ color : 'red'}}>{this.state.msg}</span> 
+                        onChange={(e) => this.props.SearchByBookNamePost(e.target.value)
+                } />
+                        <span style={{ color : 'red'}}>{this.state.data}</span> 
                         <button className="btn btn-primary btn-sm" type="submit">Search</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input className="form-control mr-sm-2" type="search" placeholder="ByAutorName" aria-label="Search" 

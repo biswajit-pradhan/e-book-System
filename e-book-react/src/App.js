@@ -12,6 +12,7 @@ import Reader from './components/Reader';
 import Search from './components/Search';
 import Author from './components/Author';
 import AddBook from './components/Author/AddBook';
+import Logout from './components/User/Logout';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Reader />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
@@ -28,7 +29,8 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/author" element={<AddBook/>} />
-          </Routes>
+            <Route path="/logout" element={<Logout/>} />
+          </Routes> */}
           {/* <Reader/> */}
           {/* <Book/> */}
           {/* <Search/> */}

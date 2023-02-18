@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
 import Reader from "../../Reader";
+import Search from "../../Search";
 import SignUp from "../SignUp";
 
 
@@ -17,7 +18,7 @@ export class Login extends Component {
           },
           errors: {},
           msg: '',
-          redirect: '/employee',
+          redirect: '/search',
           isLoggedIn: false
       };
     }
@@ -27,7 +28,7 @@ export class Login extends Component {
     render() {
        
       return (
-          this.state.isLoggedIn?<div ><Reader /></div>  : 
+          this.state.isLoggedIn?<div ><Search /></div>  : 
         <div>
           <div className="row">
             <div className="col-sm-3"></div>
