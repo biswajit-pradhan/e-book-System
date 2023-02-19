@@ -3,8 +3,6 @@ import "./style.css";
 import { connect } from "react-redux";
 import { addUserSignUp } from "../../../action/User/SignUp";
 import axios from "axios";
-import {Login} from "../LogIn"
-import { Link } from "react-router-dom";
 
 class SignUp extends Component {
     constructor(props) {
@@ -46,7 +44,7 @@ class SignUp extends Component {
                                         <span style={{color:'red'}}>{this.state.errors['emailId']}</span>
                                     </div>
                                     <label htmlFor="userrole" className="text-info" >Select User Type:</label><br />
-                                    <select className="form-control" defaultValue={"DEFAULT"} name="userrole"
+                                    <select className="form-control" name="userrole"
                                         value={this.state.userSignUp.userrole}
                                         onChange={this.changeHandler} >
                                         <option key={0} value="">--SELECT USER--</option>
