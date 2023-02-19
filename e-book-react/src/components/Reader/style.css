@@ -1,0 +1,34 @@
+.row-data{
+    border: 3px solid;
+    background-color: grey;
+    margin-top: 10px;
+    width: ;
+}
+tbody{
+    color: lime;
+}
+.image-grid{
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 10px;
+}
+
+.image-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-item img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+.latestBook{
+    border: 3px solid;
+    border-color: aquamarine;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+}

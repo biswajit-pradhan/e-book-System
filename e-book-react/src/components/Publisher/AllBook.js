@@ -1,32 +1,25 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { publisherBooks } from "../../action/Publisher";
-import { booksOnRent } from "../../action/Publisher";
-import { addBook } from "../../action/Publisher";
 
-export class Publisher extends Component {
+export class AllBook extends Component {
     constructor(props) {
         super(props);
     
-        this.state = {};
+        this.state = {
+           
+        };
     }
 
     componentDidMount() {  
         this.props.publisherBooks();
-        
-        
     }   
-
-    handleButtonClick(){
-        this.props.booksOnRent();
-    }
-
 
     render() {
         return (
+           
             <div>
-                <h1>Publisher Books In DB</h1>
-                <button onClick={()=>this.handleButtonClick()}>Books On Rent</button>
+                <h1>All Books</h1>
                 
                 <div className="col-lg-9">
                     <table className="table">
@@ -72,4 +65,4 @@ function mapStateToProps(state) {
       bookList: state.publbook
     };
 }
-export default connect(mapStateToProps, {publisherBooks,booksOnRent})(Publisher);
+export default connect(mapStateToProps, {publisherBooks})(AllBook);

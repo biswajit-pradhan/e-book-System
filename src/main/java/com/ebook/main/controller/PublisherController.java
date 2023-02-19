@@ -24,6 +24,7 @@ import com.ebook.main.service.PublisherService;
 
 @CrossOrigin(origins = {"*"})
 @RestController
+@CrossOrigin(origins= {"*"})
 @RequestMapping("api/publisher")
 public class PublisherController {
 	

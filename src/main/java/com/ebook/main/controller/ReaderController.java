@@ -23,7 +23,8 @@ import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
 import com.ebook.main.service.ReaderService;
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = {"*"})
+
 @RestController
 @RequestMapping("/api/reader")
 public class ReaderController {
@@ -49,10 +50,10 @@ public class ReaderController {
 	
 	@GetMapping("/bookByBookName/{bName}")
 	public ResponseEntity<Object> getBookByBookName(@PathVariable("bName") String bName){
-		List<Book> book = bookController.getAllBook().stream().filter(b->b.getName()
-							.equalsIgnoreCase(bName)).collect(Collectors.toList());
-		if(book.isEmpty())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
+//		List<Book> book = bookController.getAllBook().stream().filter(b->b.getName()
+//				.startsWith(bName)).collect(Collectors.toList());
+//		if(book.isEmpty())
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Name Given");
 		
 		List<Book> bookData=readerService.getBookByBookName(bName);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);

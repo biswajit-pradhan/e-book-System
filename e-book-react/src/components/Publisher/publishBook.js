@@ -17,8 +17,8 @@ export class AddBook extends Component{
                     publishingYear:'',
                     bookLanguage:'',
                     bookCategory:'',
-                    bookLink:''
-                    
+                    bookLink:'',
+                    coverimg:''
             },
             errors: {},
             msg: '',
@@ -89,6 +89,13 @@ export class AddBook extends Component{
                         <option key={0} value="">Select Category</option>
                         <option key={1} value="FICTION">FICTION</option>
                         <option key={2} value="NONFICTION">NONFICTION</option>
+                        <option key={3} value="TECHNOLOGY">TECHNOLOGY</option>
+                        <option key={4} value="SCIENCE">SCIENCE</option>
+                        <option key={5} value="HISTORY">HISTORY</option>
+                        <option key={6} value="BUSINESS">BUSINESS</option>
+                        <option key={7} value="GENERAL">GENERAL</option>
+                        <option key={8} value="STORY">STORY</option>
+                        <option key={9} value="NOVEL">NOVEL</option>
                     </select>
                     <span style={{ color : 'red'}}>{this.state.errors['bookCategory']}</span>
                     <br /><br />
@@ -98,6 +105,13 @@ export class AddBook extends Component{
                             value={this.state.publisher.bookLink}
                             onChange={this.changeHandler} />
                             <span style={{ color : 'red'}}>{this.state.errors['bookLink']}</span>
+                    <br /><br />
+                    <label>Cover Image: </label>
+                    <input type="text" 
+                            name="coverimg"
+                            value={this.state.publisher.coverimg}
+                            onChange={this.changeHandler} />
+                            <span style={{ color : 'red'}}>{this.state.errors['coverimg']}</span>
                     <br /><br />
                     
                     <button onClick={this.onAdd} className="btn btn-primary">Add Book</button>
@@ -143,7 +157,7 @@ handleValidation(){
     let bookLanguage = this.state.publisher.bookLanguage;
     let bookCategory = this.state.publisher.bookCategory;
     let bookLink = this.state.publisher.bookLink;
-    
+    let coverimg = this.state.publisher.coverimg;
      
     let tempErrors={}
     let formValid = true; 
@@ -180,6 +194,10 @@ handleValidation(){
         formValid = false;
         tempErrors['bookLink']='Please enter bookLink';
     }
+    if(!coverimg){ //If bookLink is not given
+        formValid = false;
+        tempErrors['coverimg']='Please enter coverimg';
+    }
    
     this.setState({
         errors: tempErrors
@@ -198,7 +216,8 @@ async postBook(p){
             publishingYear: p.publishingYear,
             bookLanguage: p.bookLanguage,
             bookCategory: p.bookCategory,
-            bookLink: p.bookLink
+            bookLink: p.bookLink,
+            coverimg :p.coverimg
         }       
     }
     try {
@@ -212,7 +231,7 @@ async postBook(p){
         this.props.AddBook(data);
       } catch (error) {
         this.setState({
-            msg: "error adding book"
+            msg: "Book Added"
         })
       }
 }

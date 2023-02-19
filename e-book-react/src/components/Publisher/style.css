@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  height: 100vh;
+}
+#publisher .container #publisher-row #publisher-column #publisher-box {
+  margin-top: 80px;
+  max-width: 600px;
+  height: 830px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#publisher .container #publisher-row #publisher-column #publisher-box #publisher-form {
+  padding: 20px;
+}
+#publisher .container #publisher-row #publisher-column #publisher-box #publisher-form #register-link {
+  margin-top: -85px;
+}
