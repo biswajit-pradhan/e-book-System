@@ -43,17 +43,6 @@ export default class Navbar extends Component{
                                 </li><li className="nav-item active">
                                     <a className="nav-link" href="/search"><b>Search Book</b></a>
                                 </li>
-                                <li className="nav-item">
-                                    <select className="nav-link" defaultValue={"DEFAULT"}>
-                                        <option value="DEFAULT">Book Category</option>
-                                        <option value="FICTION">Fiction</option>
-                                        <option value="NONFICTION">Non-Fiction</option>
-                                        <option value="TECHNOLOGY">Technology</option>
-                                        <option value="SCIENCE">Science</option>
-                                        <option value="HISTORY">History</option>
-                                        <option value="BUSINESS">Business</option>
-                                    </select>
-                                </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
                                 <a className="nav-link" href="/publisher"><b>Publisher</b> ctr</a>
