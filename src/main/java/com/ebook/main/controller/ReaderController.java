@@ -1,5 +1,6 @@
 package com.ebook.main.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,9 +56,10 @@ public class ReaderController {
 	public ResponseEntity<Object> getBookByBookName(@PathVariable("bName") String bName){
 		List<Book> book = bookService.getAllBook().stream().filter(b->b.getName().toLowerCase().startsWith(bName.toLowerCase())).collect(Collectors.toList());
 		Message m = new Message();
+		List list = new ArrayList();
 		if(book.isEmpty()) {
 			m.setMsg(" No such book Available");
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+			return ResponseEntity.status(HttpStatus.OK).body(list);
 		}
 		List<Book> bookData=readerService.getBookByBookName(bName);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
@@ -67,9 +69,10 @@ public class ReaderController {
 	public ResponseEntity<Object> getBooksByPublisherName(@PathVariable("pName") String pName){
 		List<Publisher> publisherBook=publisherController.getAllPublisher().stream().filter(p->p.getName().toLowerCase().startsWith(pName.toLowerCase())).collect(Collectors.toList());
 		Message m = new Message();
+		List list = new ArrayList();
 		if(publisherBook.isEmpty()) {
-			m.setMsg(" Not Matching");
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+			m.setMsg(" No Matching");
+			return ResponseEntity.status(HttpStatus.OK).body(list);
 		}	
 		List<Book> bookData=readerService.getBooksByPublisherName(publisherBook);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
@@ -80,9 +83,10 @@ public class ReaderController {
 		
 		List<Author> authorBook=authorController.getAllAuthor().stream().filter(a->a.getName().toLowerCase().startsWith(aName.toLowerCase())).collect(Collectors.toList());
 		Message m = new Message();
+		List list = new ArrayList();
 		if(authorBook.isEmpty()) {
-			m.setMsg(" Not Matching");
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(m);
+			m.setMsg(" No Matching");
+			return ResponseEntity.status(HttpStatus.OK).body(list);
 		}
 		List<Book> bookData=readerService.getBooksByAuthorName(authorBook);
 		return ResponseEntity.status(HttpStatus.OK).body(bookData);
