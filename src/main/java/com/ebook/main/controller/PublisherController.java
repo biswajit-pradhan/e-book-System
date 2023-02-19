@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ebook.main.bto.Message;
 import com.ebook.main.model.Book;
 import com.ebook.main.model.Publisher;
 import com.ebook.main.service.PublisherService;
@@ -33,11 +34,16 @@ public class PublisherController {
 	private BookController bookController;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> addPublisher(@RequestBody Publisher publisher) {
+	public ResponseEntity<Object> addPublisher(@RequestBody Publisher publisher) {
 		bookController.addBook(publisher.getBook());
 		publisherService.addPublisher(publisher);
-		return ResponseEntity.status(HttpStatus.OK).body("Publisher Added Successfully");
+				
+		Message m = new Message();
+		m.setMsg("Publisher Book Added");
+		return ResponseEntity.status(HttpStatus.OK).body(m);
 	}
+	
+	
 	@GetMapping("/allpublisher")
 	public List<Publisher> getAllPublisher(){
 		List<Publisher> list = publisherService.getAllPublisher();

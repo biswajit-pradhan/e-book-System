@@ -66,12 +66,10 @@ public class ReaderBookService {
 		return readerBookRepository.findAll();
 	}
 
-	public List<Book> getBooksByReaderId(int rid) {
+	public List<ReaderBook> getBooksByReaderId(int rid) {
 		
-		List<Book> book=getAllReaderBook().stream().filter(rb->rb.getReader().getId()==rid)
-							.map(rb->rb.getBook()).collect(Collectors.toList());
-		
-		
+		List<ReaderBook> book=getAllReaderBook().stream().filter(rb->rb.getReader().getId()==rid)
+							.collect(Collectors.toList());	
 		return book;
 	}
 	
