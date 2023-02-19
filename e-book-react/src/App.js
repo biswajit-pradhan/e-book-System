@@ -8,14 +8,13 @@ import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
 import Footer from './components/Footer';
-import Reader from './components/Home';
 import Search from './components/Search';
-import BookByAuthor from './components/Author/BookByAuthor';
-import AddBook from './components/Author/AddBook';
 import AuthorDashboard from './components/Author/AuthorDashboard';
-
 import Logout from './components/User/Logout';
 import Home from './components/Home';
+import PublisherDashBord from './components/Publisher/PublisherDashBord';
+import Terms from "./components/Terms";
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -24,32 +23,26 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          {/* <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
-            <Route path="/author" element={<AuthorDashboard/>} />
+            <Route path="/publisher" element={<PublisherDashBord/>} />
+            <Route path="/author" element={<AuthorDashboard/>}/>
             <Route path="/logout" element={<Logout/>} />
-          </Routes>  */}
-            {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
-          {/* </Routes> */} 
-          {/* </Routes> */}
-          {/* <SignUp /> */}
-          {/* <Login /> */}
-          {/* <Reader/> */}
-          {/* <Book/> */}
-          {/* <Search/> */}
-          {/* <Reader /> */}
-          {/* <AuthorDashboard/> */}
+            <Route path="/terms" element={<Terms/>} />
+            <Route path="/contact" element={<Contact/>} />
+          </Routes> 
         </div>
         <footer className="footer--pin">
           <Footer />
         </footer>
 
-      </Provider>
+      </Provider> 
+      
     </div>
   );
 }

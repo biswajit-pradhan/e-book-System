@@ -2,9 +2,11 @@ import axios from "axios";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
-// import Reader from "../../Home";
-// import Search from "../../Search";
-// import SignUp from "../SignUp";
+import AuthorDashboard from "../../Author/AuthorDashboard";
+import Reader from "../../Home";
+import PublisherDashBord from "../../Publisher/PublisherDashBord";
+import Search from "../../Search";
+import SignUp from "../SignUp";
 import "./style.css";
 
 export class Login extends Component {
@@ -18,7 +20,8 @@ export class Login extends Component {
           },
           errors: {},
           msg: '',
-          //redirect: '/search',
+          
+          redirect: '/publisher',
           isLoggedIn: false
       };
     }
@@ -26,7 +29,10 @@ export class Login extends Component {
     componentDidMount() {}
   
     render() {
+       
+                   
       return (
+         this.state.isLoggedIn?<div ><PublisherDashBord /></div>  : 
         <div id="login">
             <h3 className="text-center text-white pt-5">Login Form</h3>
             <div className="container">
@@ -84,6 +90,7 @@ export class Login extends Component {
       }
   
       handleValidation(){
+        const userNamePattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           let userName = this.state.user.userName;
           let password = this.state.user.password; 
           let tempErrors={}
@@ -91,6 +98,9 @@ export class Login extends Component {
           if(!userName){ //If name is not given
               formValid = false;
               tempErrors['userName']='userName cannot be empty';
+          }else if(!userNamePattern.test(userName)){
+               formValid = false;
+              tempErrors['userName']='UserName not vallid';
           }
           if(!password){ //If password is not given
               formValid = false;

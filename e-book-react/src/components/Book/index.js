@@ -16,8 +16,16 @@ class Book extends Component {
 
     componentDidMount() {
         this.props.allBooks();
+
     }
+
+    handleClick=(b)=>{
+        console.log(b)
+
+    }
+
     render() {
+
         return (
             <div>
                 <h1>Books List In DB</h1>

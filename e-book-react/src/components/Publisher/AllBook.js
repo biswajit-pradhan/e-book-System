@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BooksByAuthorName } from '../../action/Author';
-import { allBooksOnRent } from '../../action/Author';
+import { Component } from "react";
+import { connect } from "react-redux";
+import { publisherBooks } from "../../action/Publisher";
 
-
-class BookByAuthor extends Component {
+export class AllBook extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            
+           
         };
     }
 
-    componentDidMount() {
-        this.props.BooksByAuthorName(localStorage.getItem('userName'));
-    }
+    componentDidMount() {  
+        this.props.publisherBooks(localStorage.getItem('userName'));
+    }   
 
-    
     render() {
         return (
+           
             <div>
-                <h1>Author Book List</h1>
-               
-                    <table className="table table-dark table-hover">
+                <h1>All Books</h1>
+                
+                <div className="col-lg-9">
+                    <table className="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">SlNo</th>
+                                <th scope="col">#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
@@ -57,14 +56,13 @@ class BookByAuthor extends Component {
                         </tbody>
                     </table>
                 </div>
-
+            </div>
         )
     };
 }
 function mapStateToProps(state) {
     return {
-      bookList: state.authorReducer
+      bookList: state.publbook
     };
 }
-export default connect(mapStateToProps, {BooksByAuthorName,allBooksOnRent})(BookByAuthor);
-
+export default connect(mapStateToProps, {publisherBooks})(AllBook);

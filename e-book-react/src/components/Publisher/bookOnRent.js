@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BooksByAuthorName } from '../../action/Author';
-import { allBooksOnRent } from '../../action/Author';
+import { Component } from "react";
+import { connect } from "react-redux";
+import { publisherBooks } from "../../action/Publisher";
+import { booksOnRent } from "../../action/Publisher";
+import { addBook } from "../../action/Publisher";
+import { AddBook } from "./publishBook";
 
-
-class BookByAuthor extends Component {
+export class BookOnRent extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            
+
         };
     }
 
     componentDidMount() {
-        this.props.BooksByAuthorName(localStorage.getItem('userName'));
+        this.props.booksOnRent(localStorage.getItem('userName'));
     }
-
-    
     render() {
         return (
             <div>
-                <h1>Author Book List</h1>
-               
+                <h1>Books on Rent</h1>
                     <table className="table table-dark table-hover">
                         <thead>
                             <tr>
@@ -63,8 +61,7 @@ class BookByAuthor extends Component {
 }
 function mapStateToProps(state) {
     return {
-      bookList: state.authorReducer
+      bookList: state.publbook
     };
 }
-export default connect(mapStateToProps, {BooksByAuthorName,allBooksOnRent})(BookByAuthor);
-
+export default connect(mapStateToProps, {booksOnRent})(BookOnRent);

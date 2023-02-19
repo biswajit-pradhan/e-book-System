@@ -3,6 +3,7 @@ import "./style.css";
 import { connect } from "react-redux";
 import { addUserSignUp } from "../../../action/User/SignUp";
 import axios from "axios";
+
 class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +44,7 @@ class SignUp extends Component {
                                         <span style={{color:'red'}}>{this.state.errors['emailId']}</span>
                                     </div>
                                     <label htmlFor="userrole" className="text-info" >Select User Type:</label><br />
-                                    <select className="form-control" defaultValue={"DEFAULT"} name="userrole"
+                                    <select className="form-control" name="userrole"
                                         value={this.state.userSignUp.userrole}
                                         onChange={this.changeHandler} >
                                         <option key={0} value="">--SELECT USER--</option>
@@ -58,6 +59,7 @@ class SignUp extends Component {
                                             onChange={this.changeHandler}/>
                                         <span style={{color:'red'}}>{this.state.errors['password']}</span>
                                     </div>
+                                    <span style={{color:'green'}}>{this.state.msg}</span> <br />
                                     <div className="form-group">
                                         <br/>
                                         <input className="btn btn-primary btn-lg" type="submit" value="SignUp" onClick={this.onSignUp} />
@@ -81,14 +83,16 @@ class SignUp extends Component {
     }
     onSignUp = ()=>{
         if(this.handleValidation()){
-           // console.log(this.state.userSignUp);
-           this.postUser(this.state.userSignUp);
-        }
-        else{
-            console.log('validation not passed..');     
-        }
+            this.postUser(this.state.userSignUp);
+         }
+         else{
+             console.log('validation not passed..');     
+         }
     }
     handleValidation(){
+        const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const namePattern=/^[a-zA-Z.'\s]{2,25}$/;
+        const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
         let userName = this.state.userSignUp.userName;
         let emailId = this.state.userSignUp.emailId; 
         let password = this.state.userSignUp.password; 
@@ -97,14 +101,23 @@ class SignUp extends Component {
         if(!userName){
             formValid = false;
             tempErrors['userName']='Name cannot be empty';
+        }else if(!namePattern.test(userName)){
+            formValid = false;
+            tempErrors['userName']='Name must be at least 2 and maximum 25 characters';
         }
         if(!emailId){ 
             formValid = false;
             tempErrors['emailId']='Email cannot be empty';
+        }else if(!emailPattern.test(emailId)){
+            formValid = false;
+            tempErrors['emailId']='email not valid';
         }
         if(!password){ 
             formValid = false;
             tempErrors['password']='Password cannot be empty';
+        }else if(!passwordPattern.test(password)){ 
+            formValid = false;
+            tempErrors['password']='Password must contain 8 characters,one upper character and one captital letter';
         }
     
         this.setState({
@@ -119,7 +132,7 @@ class SignUp extends Component {
             console.log('API success');
             console.log(data);
             this.setState({
-                msg: "data.msg"
+                msg: "User Added"
             })
             this.props.addUserSignUp(data);
           } catch (error) {

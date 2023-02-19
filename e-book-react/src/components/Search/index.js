@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { SearchByBookNamePost } from "../../action/Search";
 import { SearchByAuthorNamePost } from "../../action/Search";
 import { SearchByPublisherNamePost } from "../../action/Search";
-import Navbar from "../Navbar";
+
 import "./style.css";
 export class Search extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export class Search extends Component {
                 <div>
                     <h1>Search a Book</h1>
                     <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="ByBookNmae" aria-label="Search" 
+                        <input className="form-control mr-sm-2" type="search" placeholder="ByBookName" aria-label="Search" 
                         onChange={(e) => this.props.SearchByBookNamePost(e.target.value).catch((errors) =>
                             this.setState({ msg: "errors.response.data.msg" }))} />
                         <span style={{ color : 'red'}}>{this.state.msg}</span> 
@@ -62,7 +62,7 @@ export class Search extends Component {
                                     <tr key={b.id}>
                                         <th scope="row" key={b.id}> {index + 1}</th>
                                         <td>{b.id}</td>
-                                        <td><img src={require('../../coverimages/'+b.coverimg)}width={180} height={200}></img></td>
+                                        <td><img src={require('../../coverimages/'+b.coverimg)}width={180} height={200} alt="info"></img></td>
                                         <td>{b.name}</td>
                                         <td>{b.price}</td>
                                         <td>{b.authorName}</td>

@@ -25,7 +25,9 @@ import com.ebook.main.model.Publisher;
 import com.ebook.main.model.Reader;
 import com.ebook.main.service.BookService;
 import com.ebook.main.service.ReaderService;
+
 @CrossOrigin(origins = {"*"})
+
 @RestController
 @RequestMapping("/api/reader")
 public class ReaderController {
