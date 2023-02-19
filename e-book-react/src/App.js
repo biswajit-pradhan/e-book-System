@@ -7,13 +7,11 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
-
 import Footer from './components/Footer';
 import Search from './components/Search';
 import BookByAuthor from './components/Author/BookByAuthor';
 import AddBook from './components/Author/AddBook';
 import AuthorDashboard from './components/Author/AuthorDashboard';
-
 import Logout from './components/User/Logout';
 import Home from './components/Home';
 import ReaderBook from './components/ReaderBook';
