@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
-import Publisher from './components/Publisher';
 
 import Footer from './components/Footer';
 import Reader from './components/Home';
@@ -18,6 +17,7 @@ import AuthorDashboard from './components/Author/AuthorDashboard';
 
 import Logout from './components/User/Logout';
 import Home from './components/Home';
+import PublisherDashBord from './components/Publisher/PublisherDashBord';
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/logout" element={<Logout/>} />
+            <Route path="/publisher" element={<PublisherDashBord/>} />
           </Routes> 
             {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
           {/* </Routes> */} 
