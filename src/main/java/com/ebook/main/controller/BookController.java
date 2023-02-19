@@ -2,6 +2,7 @@ package com.ebook.main.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ebook.main.bto.Message;
 import com.ebook.main.model.Book;
-
+import com.ebook.main.model.Publisher;
+import com.ebook.main.repository.PublisherRepository;
 import com.ebook.main.service.BookService;
-
-
 
 
 @CrossOrigin(origins = {"*"})
@@ -31,6 +31,8 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private PublisherRepository publisherRepository;
 
 	@PostMapping("/addbook")
 	public ResponseEntity<Object> addBook(@RequestBody Book book) {
@@ -73,7 +75,13 @@ public class BookController {
 		Optional<Book> optional = bookService.getBookById(bid);
 		if (!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+		List<Publisher> publisher =  publisherRepository.findAll();
+		List<Integer> pubid = publisher.stream().filter(e->e.getBook().getId()==bid).map(e->e.getId()).collect(Collectors.toList());
+		for(Integer i :pubid) {
+			publisherRepository.deleteById(i);
+		}
 		bookService.deleteBookById(bid);
+		
 		return ResponseEntity.status(HttpStatus.OK).body("Book deleted");
 	}	
 	

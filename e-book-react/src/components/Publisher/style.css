@@ -7,7 +7,7 @@ body {
 #publisher .container #publisher-row #publisher-column #publisher-box {
   margin-top: 80px;
   max-width: 600px;
-  height: 830px;
+  height: auto;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }

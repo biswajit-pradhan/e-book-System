@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
 import Reader from "../../Home";
+import PublisherDashBord from "../../Publisher/PublisherDashBord";
 import Search from "../../Search";
 import SignUp from "../SignUp";
 import "./style.css";
@@ -18,7 +19,7 @@ export class Login extends Component {
           },
           errors: {},
           msg: '',
-          redirect: '/search',
+          redirect: '/publisher',
           isLoggedIn: false
       };
     }
@@ -78,7 +79,7 @@ export class Login extends Component {
       //   </div>
       // );
       return (
-         this.state.isLoggedIn?<div ><Search /></div>  : 
+         this.state.isLoggedIn?<div ><PublisherDashBord /></div>  : 
         <div id="login">
             <h3 className="text-center text-white pt-5">Login Form</h3>
             <div className="container">

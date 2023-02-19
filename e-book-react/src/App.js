@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
+
 import Footer from './components/Footer';
 import Search from './components/Search';
 import BookByAuthor from './components/Author/BookByAuthor';
@@ -18,6 +19,7 @@ import Home from './components/Home';
 import ReaderBook from './components/ReaderBook';
 import Terms from './components/Terms';
 import Contact from './components/Contact';
+import PublisherDashBord from './components/Publisher/PublisherDashBord';
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/logout" element={<Logout/>} />
+            <Route path="/publisher" element={<PublisherDashBord/>} />
             <Route path="/terms" element={<Terms/>} />
             <Route path="/contact" element={<Contact/>} />
           </Routes> 
@@ -46,13 +49,14 @@ function App() {
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <ReaderBook /> */}
-      
+          {/* <Reader /> */}
         </div>
         <footer className="footer--pin">
           <Footer />
         </footer>
 
-      </Provider>
+      </Provider> 
+      
     </div>
   );
 }
