@@ -6,14 +6,21 @@ import "./style.css";
 export class Book extends Component {
     constructor(props) {
         super(props);
-    
         this.state = {};
     }
 
     componentDidMount() {
         this.props.allBooks();
+
     }
+
+    handleClick=(b)=>{
+        console.log(b)
+
+    }
+
     render() {
+
         return (
             <div>
                 <h1>Books List In DB</h1>
@@ -46,7 +53,8 @@ export class Book extends Component {
                                         <td>{b.publishingYear}</td>
                                         <td>{b.bookLanguage}</td>
                                         <td>{b.bookCategory}</td>
-                                        <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit">Get Book</button></td>
+                                        <td><button className="btn btn-outline-success my-2 my-sm-0" onClick={()=>this.handleClick(b)}>Get Book</button></td>
+                                        
                                     </tr>
                                 ))
                             }
