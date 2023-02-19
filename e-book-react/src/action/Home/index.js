@@ -1,3 +1,5 @@
+
+//getting data from the business API
 export const alllatestBook= () => (dispatch) =>{
     fetch('http://localhost:8080/api/book/lastFiveBooksAddedToDB')
     .then(response=> response.json())
@@ -7,6 +9,7 @@ export const alllatestBook= () => (dispatch) =>{
          )
 }
 
+//getting data from the business API
 export const topFiveBooksByBorrowingDays= () => (dispatch) =>{
     fetch('http://localhost:8080/api/readerbook/topFiveBooksByBorrowingDays')
     .then(response=> response.json())
@@ -16,6 +19,7 @@ export const topFiveBooksByBorrowingDays= () => (dispatch) =>{
          )
 }
 
+//getting data from the business API
 export const getAllPublisher= () => (dispatch) =>{
     fetch('http://localhost:8080/api/publisher/allpublisher')
     .then(response=> response.json())
@@ -25,6 +29,7 @@ export const getAllPublisher= () => (dispatch) =>{
          )
 }
 
+//getting data from the business API
 export const getAllAuthor= () => (dispatch) =>{
     fetch('http://localhost:8080/api/author/allauthor')
     .then(response=> response.json())

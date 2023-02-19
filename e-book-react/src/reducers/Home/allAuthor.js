@@ -1,3 +1,4 @@
+//setup initial state
 const initialState ={
     list:[]
 };
