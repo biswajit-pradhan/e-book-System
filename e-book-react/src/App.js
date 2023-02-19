@@ -17,6 +17,7 @@ import AuthorDashboard from './components/Author/AuthorDashboard';
 
 import Logout from './components/User/Logout';
 import Home from './components/Home';
+import PublisherDashBord from './components/Publisher/PublisherDashBord';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/logout" element={<Logout/>} />
+            <Route path="/publisher" element={<PublisherDashBord/>} />
           </Routes> 
             {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
           {/* </Routes> */} 
