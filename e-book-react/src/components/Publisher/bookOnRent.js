@@ -10,27 +10,21 @@ export class BookOnRent extends Component {
         super(props);
     
         this.state = {
-            
+
         };
     }
 
-    componentDidMount() {  
-        this.props.booksOnRent(localStorage.getItem('user'));
-        
-        
-    }   
-
+    componentDidMount() {
+        this.props.booksOnRent(localStorage.getItem('userName'));
+    }
     render() {
         return (
-           
             <div>
-                <h1>Books On Rent</h1>
-                
-                <div className="col-lg-9">
-                    <table className="table">
+                <h1>Books on Rent</h1>
+                    <table className="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">SlNo</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
@@ -61,7 +55,7 @@ export class BookOnRent extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
+
         )
     };
 }

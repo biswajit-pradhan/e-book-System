@@ -5,10 +5,10 @@ export const publisherBooks= (username) => (dispatch) =>{
             type: 'BOOK_BY_PUBL_NAME',
             payload: data})
          )
-};  
+};     
 
-export const booksOnRent= (user) => (dispatch) =>{
-    fetch('http://localhost:8080/api/publisher/getBooksOnRentByPublisherName/'+user)
+export const booksOnRent= (userName) => (dispatch) =>{
+    fetch('http://localhost:8080/api/publisher/getBooksOnRentByPublisherName/'+ userName)
     .then(response=> response.json())
     .then(data=> dispatch({
             type: 'BOOK_ON_RENT',
