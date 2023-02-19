@@ -43,49 +43,49 @@ export class AddBook extends Component {
                                 <h5 className="card-title">Enter Book Info: </h5>
                                 <p className="card-text">
                                     <span>{this.state.msg}</span> <br />
-                                    <label>Publisher Name: </label>
+                                    <label>Publisher Name: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="name"
                                         value={this.state.publisher.name}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['name']}</span>
                                     <br /><br />
-                                    <label>Book Name: </label>
+                                    <label>Book Name: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="bname"
                                         value={this.state.publisher.bname}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['bname']}</span>
                                     <br /><br />
-                                    <label>Book Price: </label>
+                                    <label>Book Price: </label>&nbsp;&nbsp;
                                     <input type="number"
                                         name="price"
                                         value={this.state.publisher.price}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['price']}</span>
                                     <br /><br />
-                                    <label>Author Name: </label>
+                                    <label>Author Name: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="authorName"
                                         value={this.state.publisher.authorName}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['authorName']}</span>
                                     <br /><br />
-                                    <label>Publishing Year: </label>
+                                    <label>Publishing Year: </label>&nbsp;&nbsp;
                                     <input type="number"
                                         name="publishingYear"
                                         value={this.state.publisher.publishingYear}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['publishingYear']}</span>
                                     <br /><br />
-                                    <label>Book Language: </label>
+                                    <label>Book Language: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="bookLanguage"
                                         value={this.state.publisher.bookLanguage}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['bookLanguage']}</span>
                                     <br /><br />
-                                    <label>Select Category </label>
+                                    <label>Select Category </label>&nbsp;&nbsp;
                                     <select name="bookCategory"
                                         value={this.state.publisher.bookCategory}
                                         onChange={this.changeHandler} >
@@ -102,14 +102,14 @@ export class AddBook extends Component {
                                     </select>
                                     <span style={{ color: 'red' }}>{this.state.errors['bookCategory']}</span>
                                     <br /><br />
-                                    <label>Book Link: </label>
+                                    <label>Book Link: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="bookLink"
                                         value={this.state.publisher.bookLink}
                                         onChange={this.changeHandler} />
                                     <span style={{ color: 'red' }}>{this.state.errors['bookLink']}</span>
                                     <br /><br />
-                                    <label>Cover Image: </label>
+                                    <label>Cover Image: </label>&nbsp;&nbsp;
                                     <input type="text"
                                         name="coverimg"
                                         value={this.state.publisher.coverimg}
