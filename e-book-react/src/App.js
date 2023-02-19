@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
-import Publisher from './components/Publisher';
 
 import Footer from './components/Footer';
 import Reader from './components/Home';
