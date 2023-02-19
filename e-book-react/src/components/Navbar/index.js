@@ -52,6 +52,9 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
+              <a className="nav-link" href="/readerbook">
+                  <b>Reader</b> prof
+                </a>
                 <a className="nav-link" href="/publisher">
                   <b>Publisher</b> ctr
                 </a>

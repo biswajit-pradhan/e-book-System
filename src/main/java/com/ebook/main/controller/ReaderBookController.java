@@ -119,8 +119,10 @@ public class ReaderBookController {
 	}
 	
 	
-	@GetMapping("/getBooksDataByReaderId/{rid}")
-	public ResponseEntity<Object> getBooksByReaderId(@PathVariable("rid") int rid){
+	@GetMapping("/getBooksDataByReaderId/{rnm}")
+	public ResponseEntity<Object> getBooksByReaderId(@PathVariable("rnm") String rnm){
+		Reader reader = readerRepository.getReaderBynameQuerry(rnm);
+		int rid = reader.getId();
 		Optional<Reader> optional=readerRepository.findById(rid);
 		if(!optional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Reader Id Given");
