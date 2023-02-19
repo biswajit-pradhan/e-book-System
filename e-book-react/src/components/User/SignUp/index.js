@@ -93,7 +93,7 @@ class SignUp extends Component {
     }
     handleValidation(){
         const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const namePattern=/^[a-zA-Z\s]{2,25}$/;
+        const namePattern=/^[a-zA-Z.'\s]{2,25}$/;
         const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
         let userName = this.state.userSignUp.userName;
         let emailId = this.state.userSignUp.emailId; 
