@@ -14,17 +14,15 @@ class BookByAuthor extends Component {
     }
 
     componentDidMount() {
-        this.props.BooksByAuthorName();
+        this.props.BooksByAuthorName(localStorage.getItem('userName'));
     }
 
-    handleButtonClick=()=>{
-        this.props.allBooksOnRent();
-    }
+    
     render() {
         return (
             <div>
                 <h1>Author Book List</h1>
-                <button onClick={()=>this.handleButtonClick()}>Book on Rent</button>
+               
                     <table className="table table-dark table-hover">
                         <thead>
                             <tr>

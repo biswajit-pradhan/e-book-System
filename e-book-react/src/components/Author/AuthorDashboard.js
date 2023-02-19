@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LogIn from '../User/LogIn';
 import AddBook from './AddBook';
 import AuthorBook from './AuthorBook';
 import BookByAuthor from './BookByAuthor';
@@ -10,17 +11,34 @@ class AuthorDashboard extends Component {
         this.state = {
           showComponent1: true,
           showComponent2: false,
-          showComponent3: false
+          showComponent3: false,
+          errors: {},
+          msg: "",
+          isLoggedIn: false
         };
         this.toggleShowComponent1 = this.toggleShowComponent1.bind(this);
         this.toggleShowComponent2 = this.toggleShowComponent2.bind(this);
         this.toggleShowComponent3 = this.toggleShowComponent3.bind(this);
       }
-    
+
+
+      componentDidMount(){
+        let username = localStorage.getItem('username');
+
+        if(username === null || username === undefined) 
+              this.setState({isLoggedIn: false})
+        else
+              this.setState({isLoggedIn: true})
+      }
+
+
+
+
       toggleShowComponent1() {
         this.setState(prevState => ({
           showComponent1: !prevState.showComponent1
         }));
+       
       }
     
       toggleShowComponent2() {
@@ -36,7 +54,9 @@ class AuthorDashboard extends Component {
       }
     
       render() {
+        const { errors, msg } = this.state;
         return (
+            !this.state.isLoggedIn?<div ><LogIn /></div>  :
           <div className="dashboard"><br/>
             <div className="dashboard-buttons">
               <button type="button" className='btn btn-primary' onClick={this.toggleShowComponent1}>{this.state.showComponent1 ? "Add Book" : "Add Book"}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,12 +75,12 @@ class AuthorDashboard extends Component {
                 <BookByAuthor />
               </div>
             }
-            {/* {this.state.showComponent3 &&
+            {this.state.showComponent3 &&
               <div className="dashboard-component">
-                <h2>Component 3</h2>
-                <BookOnRent />
+                
+                <AuthorBook />
               </div>
-            } */}
+            }
           </div>
                 );
               }
