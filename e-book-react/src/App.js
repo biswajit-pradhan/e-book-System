@@ -7,13 +7,11 @@ import Navbar from "./components/Navbar";
 import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
-
 import Footer from './components/Footer';
 import Search from './components/Search';
 import BookByAuthor from './components/Author/BookByAuthor';
 import AddBook from './components/Author/AddBook';
 import AuthorDashboard from './components/Author/AuthorDashboard';
-
 import Logout from './components/User/Logout';
 import Home from './components/Home';
 import ReaderBook from './components/ReaderBook';
@@ -41,16 +39,6 @@ function App() {
             <Route path="/terms" element={<Terms/>} />
             <Route path="/contact" element={<Contact/>} />
           </Routes> 
-            
-          {/* </Routes> */} 
-          {/* </Routes> */}
-          {/* <SignUp /> */}
-          {/* <Login /> */}
-          {/* <Reader/> */}
-          {/* <Book/> */}
-          {/* <Search/> */}
-          {/* <ReaderBook /> */}
-          {/* <Reader /> */}
         </div>
         <footer className="footer--pin">
           <Footer />
