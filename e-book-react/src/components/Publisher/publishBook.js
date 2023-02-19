@@ -159,7 +159,7 @@ handleValidation(){
     const bnamePattern=/^[a-zA-Z\s]{2,25}$/;
     const authorNamePattern=/^[a-zA-Z\s]{2,25}$/;
     const pYearPttern=/^[12][0-9]{3}$/;
-    const bookLanguagePattern=/^[12][0-9]{3}$/;
+    const bookLanguagePattern=/^[a-zA-Z\s]{2,25}$/;
     let name = this.state.publisher.name;
     let bname = this.state.publisher.bname;
     let price =this.state.publisher.price;
