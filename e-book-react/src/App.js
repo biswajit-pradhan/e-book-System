@@ -31,9 +31,10 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
+            <Route path="/author" element={<AuthorDashboard/>}/>
             <Route path="/logout" element={<Logout/>} />
           </Routes> 
-            {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
+            
           {/* </Routes> */} 
           {/* </Routes> */}
           {/* <SignUp /> */}

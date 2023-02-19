@@ -9,8 +9,8 @@ class AuthorDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          showComponent1: true,
-          showComponent2: false,
+          showComponent1: false,
+          showComponent2: true,
           showComponent3: false,
           errors: {},
           msg: "",
@@ -23,12 +23,12 @@ class AuthorDashboard extends Component {
 
 
       componentDidMount(){
-        let username = localStorage.getItem('username');
+        let username = localStorage.getItem('userName');
 
-        if(username === null || username === undefined) 
-              this.setState({isLoggedIn: false})
-        else
-              this.setState({isLoggedIn: true})
+    if(username === null || username === undefined) 
+          this.setState({isLoggedIn: false})
+    else
+          this.setState({isLoggedIn: true})
       }
 
 
@@ -56,7 +56,7 @@ class AuthorDashboard extends Component {
       render() {
         const { errors, msg } = this.state;
         return (
-            !this.state.isLoggedIn?<div ><LogIn /></div>  :
+          !this.state.isLoggedIn?<div ><LogIn /></div>  :
           <div className="dashboard"><br/>
             <div className="dashboard-buttons">
               <button type="button" className='btn btn-primary' onClick={this.toggleShowComponent1}>{this.state.showComponent1 ? "Add Book" : "Add Book"}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

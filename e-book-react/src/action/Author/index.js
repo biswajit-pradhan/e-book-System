@@ -1,5 +1,5 @@
-export const allBooksOnRent= (book) => (dispatch) =>{
-    fetch('http://localhost:8080/api/author/getBooksOnRentByAuthorName/'+book)
+export const allBooksOnRent= (user) => (dispatch) =>{
+    fetch('http://localhost:8080/api/author/getBooksOnRentByAuthorName/'+user)
     .then(response=> response.json())
     .then(data=> dispatch({
             type: 'ALL_BOOK_ON_RENT',
