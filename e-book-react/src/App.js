@@ -16,6 +16,8 @@ import AuthorDashboard from './components/Author/AuthorDashboard';
 import Logout from './components/User/Logout';
 import Home from './components/Home';
 import ReaderBook from './components/ReaderBook';
+import Terms from './components/Terms';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
             <Route path="/logout" element={<Logout/>} />
+            <Route path="/terms" element={<Terms/>} />
+            <Route path="/contact" element={<Contact/>} />
           </Routes> 
             {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
           {/* </Routes> */} 
