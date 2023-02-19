@@ -10,7 +10,7 @@ import userSignUp from "./User/SignUp/Index";
 import login from "./User/LogIn";
 import search from "./Search";
 import readerBook from "./ReaderBook"
-import getBooksDataByReaderId from "./ReaderBook"
+import getBooksDataByReaderId from "./ReaderBook/getBooksDataByReaderId"
 export default combineReducers({getBooksDataByReaderId,book,authorReducer,publbook,allPublisher,allAuthor,userSignUp,login,search,readerBook,alllatestBook})
 
 
