@@ -163,31 +163,53 @@ handleValidation(){
     let price = this.state.book.price;
     let bookLink= this.state.book.bookLink;
    
-     
+    const namePattern=/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+    const yearPattern=/^[12][0-9]{3}$/;
+
     let tempErrors={}
     let formValid = true; 
 
     if(!name){ //If name is not given
         formValid = false;
         tempErrors['name']=' Name cannot be empty';
+    }else if(!namePattern.test(name)){
+        formValid = false;
+        tempErrors['name']='Name must be at least 2 and maximum 25 characters';
     }
     if(!bname){ //If name is not given
         formValid = false;
         tempErrors['bname']='Book Name cannot be empty';
+    }
+    else if(!namePattern.test(bname)){
+        formValid = false;
+        tempErrors['bname']='Name must be at least 2 and maximum 25 characters';
     }
 
     if(!authorName){ //If name is not given
         formValid = false;
         tempErrors['authorName']='Author Name cannot be empty';
     }
+    else if(!namePattern.test(authorName)){
+        formValid = false;
+        tempErrors['authorName']='Name must be at least 2 and maximum 25 characters';
+    }
     if(!bookLanguage){ //If language is not given
         formValid = false;
         tempErrors['bookLanguage']='Language cannot be empty';
+    }
+    else if(!namePattern.test(bookLanguage)){
+        formValid = false;
+        tempErrors['bookLanguage']='Name must be at least 2 and maximum 20 characters';
     }
     if(!publishingYear){ //If year is not given
         formValid = false;
         tempErrors['publishingYear']='Year cannot be empty';
     }
+    else if(!yearPattern.test(publishingYear)){
+        formValid = false;
+        tempErrors['publishingYear']='Year must be 4 Digit';
+    }
+    
     if(!bookCategory){ //If book category is not given
         formValid = false;
         tempErrors['bookCategory']='Please select book category';
@@ -196,9 +218,14 @@ handleValidation(){
         formValid = false;
         tempErrors['price']='Price cannot be empty';
     }
+    
     if(!bookLink){ //If book category is not given
         formValid = false;
         tempErrors['bookLink']='Please upload file';}
+        else if(!namePattern.test(bookLink)){
+            formValid = false;
+            tempErrors['bookLink']='String must be at least 2 and maximum 25 characters';
+        }
     this.setState({
         errors: tempErrors
     });

@@ -1,3 +1,10 @@
+export const addBook = (data) => {
+    return{
+        type:'ADD_BOOK',
+        payload: data
+    }
+}
+
 export const allBooksOnRent= (user) => (dispatch) =>{
     fetch('http://localhost:8080/api/author/getBooksOnRentByAuthorName/'+user)
     .then(response=> response.json())
@@ -18,9 +25,4 @@ export const BooksByAuthorName=(username) => (dispatch) =>{
          )
 }
 
-export const addBook = (data) => {
-    return{
-        type:'ADD_BOOK',
-        payload: data
-    }
-}
+
