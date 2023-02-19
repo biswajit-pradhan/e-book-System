@@ -2,14 +2,14 @@ import * as Yup from "yup";
 
 export const publisherSchema=Yup.object({
     publisherName: Yup.string()
-        .required("Please enter publisher name!").min(1),
+        .required("Please enter publisher name!").min(2),
 
     BookTitle: Yup.string()
-        .required("Please enter valid book title").min(1),
+        .required("Please enter valid book title").min(2),
         
     
     BookAuthorName: Yup.string()
-        .required("Please enter book author name").min(1),
+        .required("Please enter book author name").min(2),
 
     BookLanguage: Yup.string()
         .required("Please enter book language"),

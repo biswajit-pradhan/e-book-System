@@ -4,7 +4,6 @@ import "./style.css"
 const AboutUs=()=>{
     return (
         <div>
-            <Navbar/>
             <p className="font-weight-bold font-italic container text-justify"><br/>About Us:<br/><br/>
              We are a team of experienced professionals who are passionate about delivering
              high-quality products and services to our clients. We have a diverse range of skills and expertise, 

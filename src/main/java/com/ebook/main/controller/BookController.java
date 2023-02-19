@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ebook.main.bto.Message;
 import com.ebook.main.model.Book;
 import com.ebook.main.service.BookService;
+
+
+
 
 @CrossOrigin(origins = {"*"})
 @RestController
@@ -28,10 +32,15 @@ public class BookController {
 	private BookService bookService;
 
 	@PostMapping("/addbook")
-	public ResponseEntity<String> addBook(@RequestBody Book book) {
+	public ResponseEntity<Object> addBook(@RequestBody Book book) {
+		
 		bookService.addBook(book);
-		return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
-	}
+		Message m = new Message();
+		m.setMsg("book added");
+		return ResponseEntity.status(HttpStatus.OK).body(m);
+}
+
+	
 	
 	
 	@GetMapping("/getallbooks")
