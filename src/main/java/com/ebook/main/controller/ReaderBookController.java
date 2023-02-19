@@ -80,20 +80,20 @@ public class ReaderBookController {
 	}
 	
 	
-	@GetMapping("/getBooksByReaderId/{rid}")
+	@GetMapping("/getBooksDataByReaderId/{rid}")
 	public ResponseEntity<Object> getBooksByReaderId(@PathVariable("rid") int rid){
 		Optional<Reader> optional=readerRepository.findById(rid);
 		if(!optional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Reader Id Given");
 		}
 		
-		List<Book> book=readerBookService.getBooksByReaderId(rid);
+		List<ReaderBook> bookData=readerBookService.getBooksByReaderId(rid);
 		
-		if(book.isEmpty()) {
+		if(bookData.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This Reader Does Not Have Any Book To Read");
 		}
 		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(book);
+		return ResponseEntity.status(HttpStatus.OK).body(bookData);
 	}
 	
 }

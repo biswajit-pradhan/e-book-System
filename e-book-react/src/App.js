@@ -8,7 +8,6 @@ import Login from './components/User/LogIn';
 import SignUp from './components/User/SignUp';
 import { store } from "./store";
 import Footer from './components/Footer';
-import Reader from './components/Home';
 import Search from './components/Search';
 import BookByAuthor from './components/Author/BookByAuthor';
 import AddBook from './components/Author/AddBook';
@@ -16,6 +15,7 @@ import AuthorDashboard from './components/Author/AuthorDashboard';
 
 import Logout from './components/User/Logout';
 import Home from './components/Home';
+import ReaderBook from './components/ReaderBook';
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
           {/* <Reader/> */}
           {/* <Book/> */}
           {/* <Search/> */}
-          {/* <Reader /> */}
+          {/* <ReaderBook /> */}
       
         </div>
         <footer className="footer--pin">
