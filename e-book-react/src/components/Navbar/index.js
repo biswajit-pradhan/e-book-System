@@ -1,7 +1,29 @@
 import { Component } from "react";
 import { SearchPost } from "../../action/Search";
-
+import LogIn from "../User/LogIn";
+import { Link } from "react-router-dom";
 export default class Navbar extends Component{
+    constructor() {
+        super();
+        this.state = {
+          isLoggedIn : false
+        };
+        let username = localStorage.getItem('userName');
+    
+        if(username === null || username === undefined) 
+              this.setState({isLoggedIn: false})
+        else
+              this.setState({isLoggedIn: true})
+      }
+    
+      componentDidMount(){
+        let username = localStorage.getItem('userName');
+    
+        if(username === null || username === undefined) 
+              this.setState({isLoggedIn: false})
+        else
+              this.setState({isLoggedIn: true})
+      }
     render(){
         return (
             <div>
@@ -18,6 +40,8 @@ export default class Navbar extends Component{
                                 </li>
                                 <li className="nav-item active">
                                     <a className="nav-link" href="/books"><b>Our Books</b></a>
+                                </li><li className="nav-item active">
+                                    <a className="nav-link" href="/search"><b>Search Book</b></a>
                                 </li>
                                 <li className="nav-item">
                                     <select className="nav-link" defaultValue={"DEFAULT"}>
@@ -32,9 +56,15 @@ export default class Navbar extends Component{
                                 </li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>this.onSearch(e.target.value)}/>
+                                <a className="nav-link" href="/publisher"><b>Publisher</b> ctr</a>
+                                <a className="nav-link" href="/author"><b>Author</b> ctr</a>
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a>
+                                {/* <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a> */}
+                                {this.state.isLoggedIn ? <Link to="/logout"><button className="btn btn-outline-danger">
+                                    Logout </button>  </Link> :
+                                    <Link to='/'><button className="btn btn-outline-success">
+                                        Login </button></Link>
+                                }
                             </form>
                         </div>
                     </nav>

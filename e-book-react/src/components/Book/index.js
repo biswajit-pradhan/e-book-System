@@ -22,6 +22,7 @@ export class Book extends Component {
                             <tr>
                                 <th scope="col">SlNo</th>
                                 <th scope="col">ID</th>
+                                <th scope="col">Book View</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Author Name</th>
@@ -38,13 +39,14 @@ export class Book extends Component {
                                     <tr key={b.id}>
                                         <th scope="row" key={b.id}> {index + 1}</th>
                                         <td>{b.id}</td>
+                                        <td><img src={require('../../coverimages/'+b.coverimg)}width={180} height={200}></img></td>
                                         <td>{b.name}</td>
                                         <td>{b.price}</td>
                                         <td>{b.authorName}</td>
                                         <td>{b.publishingYear}</td>
                                         <td>{b.bookLanguage}</td>
                                         <td>{b.bookCategory}</td>
-                                        <td>{b.bookLink}</td>
+                                        <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit">Get Book</button></td>
                                     </tr>
                                 ))
                             }

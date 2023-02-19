@@ -1,5 +1,5 @@
-export const publisherBooks= () => (dispatch) =>{
-    fetch('http://localhost:8080/api/reader/booksByPublisherName/pranil')
+export const publisherBooks= (username) => (dispatch) =>{
+    fetch('http://localhost:8080/api/reader/booksByPublisherName/'+username)
     .then(response=> response.json())
     .then(data=> dispatch({
             type: 'BOOK_BY_PUBL_NAME',
@@ -7,8 +7,8 @@ export const publisherBooks= () => (dispatch) =>{
          )
 };  
 
-export const booksOnRent= () => (dispatch) =>{
-    fetch('http://localhost:8080/api/publisher/getBooksOnRentByPublisherName/pranil')
+export const booksOnRent= (user) => (dispatch) =>{
+    fetch('http://localhost:8080/api/publisher/getBooksOnRentByPublisherName/'+user)
     .then(response=> response.json())
     .then(data=> dispatch({
             type: 'BOOK_ON_RENT',

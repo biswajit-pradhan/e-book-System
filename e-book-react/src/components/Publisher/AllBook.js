@@ -12,7 +12,7 @@ export class AllBook extends Component {
     }
 
     componentDidMount() {  
-        this.props.publisherBooks();
+        this.props.publisherBooks(localStorage.getItem('userName'));
     }   
 
     render() {

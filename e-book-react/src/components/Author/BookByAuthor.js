@@ -1,11 +1,10 @@
-import { Component } from "react";
-import { connect } from "react-redux";
-import { publisherBooks } from "../../action/Publisher";
-import { booksOnRent } from "../../action/Publisher";
-import { addBook } from "../../action/Publisher";
-import { AddBook } from "./publishBook";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { BooksByAuthorName } from '../../action/Author';
+import { allBooksOnRent } from '../../action/Author';
 
-export class BookOnRent extends Component {
+
+class BookByAuthor extends Component {
     constructor(props) {
         super(props);
     
@@ -14,23 +13,22 @@ export class BookOnRent extends Component {
         };
     }
 
-    componentDidMount() {  
-        this.props.booksOnRent(localStorage.getItem('user'));
-        
-        
-    }   
+    componentDidMount() {
+        this.props.BooksByAuthorName();
+    }
 
+    handleButtonClick=()=>{
+        this.props.allBooksOnRent();
+    }
     render() {
         return (
-           
             <div>
-                <h1>Books On Rent</h1>
-                
-                <div className="col-lg-9">
-                    <table className="table">
+                <h1>Author Book List</h1>
+                <button onClick={()=>this.handleButtonClick()}>Book on Rent</button>
+                    <table className="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">SlNo</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
@@ -61,13 +59,14 @@ export class BookOnRent extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
+
         )
     };
 }
 function mapStateToProps(state) {
     return {
-      bookList: state.publbook
+      bookList: state.authorReducer
     };
 }
-export default connect(mapStateToProps, {booksOnRent})(BookOnRent);
+export default connect(mapStateToProps, {BooksByAuthorName,allBooksOnRent})(BookByAuthor);
+
