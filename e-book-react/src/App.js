@@ -24,15 +24,16 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/search" element={<Search/>} />
+            <Route path="/author" element={<AuthorDashboard/>} />
             <Route path="/logout" element={<Logout/>} />
-          </Routes> 
+          </Routes>  */}
             {/* <Route path="/author" element={<AuthorDashboard/>}/> */}
           {/* </Routes> */} 
           {/* </Routes> */}
@@ -42,7 +43,7 @@ function App() {
           {/* <Book/> */}
           {/* <Search/> */}
           {/* <Reader /> */}
-      
+          {/* <AuthorDashboard/> */}
         </div>
         <footer className="footer--pin">
           <Footer />

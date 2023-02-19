@@ -58,11 +58,10 @@ export default class Navbar extends Component{
                             <form className="form-inline my-2 my-lg-0">
                                 <a className="nav-link" href="/publisher"><b>Publisher</b> ctr</a>
                                 <a className="nav-link" href="/author"><b>Author</b> ctr</a>
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 {/* <a className="nav-link" href="/login"><b>Login</b> or <b>Signup</b></a> */}
                                 {this.state.isLoggedIn ? <Link to="/logout"><button className="btn btn-outline-danger">
                                     Logout </button>  </Link> :
-                                    <Link to='/'><button className="btn btn-outline-success">
+                                    <Link to='login'><button className="btn btn-outline-success">
                                         Login </button></Link>
                                 }
                             </form>

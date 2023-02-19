@@ -5,7 +5,6 @@ import { SearchByAuthorNamePost } from "../../action/Search";
 import { SearchByPublisherNamePost } from "../../action/Search";
 import Navbar from "../Navbar";
 import "./style.css";
-import LogIn from "../User/LogIn";
 export class Search extends Component {
     constructor(props) {
         super(props);
@@ -16,21 +15,9 @@ export class Search extends Component {
             isLoggedIn: false
         };
     }
-    componentDidMount() {
-        //this.props.SearchPost('t');
-        //console.log(this.props.SearchPost(value))
-        //console.log(this.state.msg)
-        let username = localStorage.getItem('userName');
-
-    if(username === null || username === undefined) 
-          this.setState({isLoggedIn: false})
-    else
-          this.setState({isLoggedIn: true})
-    }
+    componentDidMount() {}
     render() {
-        
         return (
-            !this.state.isLoggedIn?<div ><LogIn /></div>  :
             <div>
                 <div>
                     <h1>Search a Book</h1>
