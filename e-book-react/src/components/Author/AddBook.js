@@ -19,7 +19,8 @@ class AddBook extends Component {
                     publishingYear:0,
                     bookLanguage:'',
                     bookCategory:'',
-                    bookLink:'' 
+                    bookLink:'',
+                    coverimg:'' 
               },
             errors: {},
             msg: '',
@@ -112,6 +113,13 @@ class AddBook extends Component {
                             value={this.state.book.bookLink}
                             onChange={this.changeHandler} />
                             <span style={{ color : 'red'}}>{this.state.errors['bookLink']}</span>
+                    <br /><br />
+                    <label>CoverImage</label>&nbsp;&nbsp;
+                   <input type="text" 
+                            name="coverimg"
+                            value={this.state.book.coverimg}
+                            onChange={this.changeHandler} />
+                            <span style={{ color : 'red'}}>{this.state.errors['coverimg']}</span>
                     <br /><br />
                    
                     
@@ -244,6 +252,7 @@ async postBook(b){
         bookCategory: b.bookCategory,
         price:b.price,
         bookLink:b.bookLink,
+        coverimg:b.coverimg
         }    
     }
     try {
