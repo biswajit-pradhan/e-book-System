@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ebook.main.model.Author;
 import com.ebook.main.model.Book;
-import com.ebook.main.model.Message;
+import com.ebook.main.bto.Message;
 import com.ebook.main.service.AuthorService;
 
-
-@CrossOrigin(origins = {"*"})
 
 @RestController
 @CrossOrigin(origins= {"*"})
