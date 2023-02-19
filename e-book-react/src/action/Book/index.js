@@ -1,4 +1,4 @@
-export const allBooks= () => (dispatch) =>{
+export let allBooks= () => (dispatch) =>{
     fetch('http://localhost:8080/api/book/getallbooks')
     .then(response=> response.json())
     .then(data=> dispatch({

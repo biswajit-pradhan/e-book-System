@@ -1,6 +1,4 @@
 import { Component } from "react";
-import { SearchPost } from "../../action/Search";
-import LogIn from "../User/LogIn";
 import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
@@ -60,18 +58,12 @@ export default class Navbar extends Component {
                 <a className="nav-link" href="/author">
                   <b>Author</b> ctr
                 </a>
-                <button
-                  className="btn btn-outline-success my-2 my-sm-0"
-                  type="submit"
-                >
-                  Search
-                </button>
                 {this.state.isLoggedIn ? (
                   <Link to="/logout">
                     <button className="btn btn-outline-danger">Logout</button>{" "}
                   </Link>
                 ) : (
-                  <Link to="/">
+                  <Link to="/login">
                     <button className="btn btn-outline-success">Login</button>
                   </Link>
                 )}
