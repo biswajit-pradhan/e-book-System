@@ -154,61 +154,89 @@ export class AddBook extends Component {
             console.log('validation not passed..');
         }
     }
+handleValidation(){
+    const namePattern=/^[a-zA-Z\s]{2,25}$/;
+    const bnamePattern=/^[a-zA-Z\s]{2,25}$/;
+    const authorNamePattern=/^[a-zA-Z\s]{2,25}$/;
+    const pYearPttern=/^[12][0-9]{3}$/;
+    const bookLanguagePattern=/^[12][0-9]{3}$/;
+    let name = this.state.publisher.name;
+    let bname = this.state.publisher.bname;
+    let price =this.state.publisher.price;
+    let authorName = this.state.publisher.authorName;
+    let publishingYear = this.state.publisher.publishingYear;
+    let bookLanguage = this.state.publisher.bookLanguage;
+    let bookCategory = this.state.publisher.bookCategory;
+    let bookLink = this.state.publisher.bookLink;
+    let coverimg = this.state.publisher.coverimg;
+     
+    let tempErrors={}
+    let formValid = true; 
 
-    handleValidation() {
-        let name = this.state.publisher.name;
-        let bname = this.state.publisher.bname;
-        let price = this.state.publisher.price;
-        let authorName = this.state.publisher.authorName;
-        let publishingYear = this.state.publisher.publishingYear;
-        let bookLanguage = this.state.publisher.bookLanguage;
-        let bookCategory = this.state.publisher.bookCategory;
-        let bookLink = this.state.publisher.bookLink;
-        let coverimg = this.state.publisher.coverimg;
+    if(!name){ //If name is not given
 
-        let tempErrors = {}
-        let formValid = true;
+        formValid = false;
+        tempErrors['name']='Publisher Name cannot be empty';
+    }
+    else if(!namePattern.test(name)){
+        formValid=false;
+        tempErrors['name']='Publisher Name must be Min 2 charecters Max 25 charectersr';
+    }
+    if(!bname){ //If book name is not given
+        formValid = false;
+        tempErrors['bname']='Book Name cannot be empty';
+    }
+    else if(!bnamePattern.test(bname)){
+        formValid=false;
+        tempErrors['bname']='Book name Name must be Min 2 charecters Max 25 charectersr';
+    }
+    if(!price){ //If price is not given
+        formValid = false;
+        tempErrors['price']='Book price cannot be empty';
+    }
+    
+    if(!authorName){ //If auther name is not given
+        formValid = false;
+        tempErrors['authorName']='Auther Name cannot be empty';
+    }
+    else if(!authorNamePattern.test(authorName)){
+        formValid=false;
+        tempErrors['authorName']='Book name Name must be Min 2 charecters Max 25 charectersr';
+    }
+    if(!publishingYear){ //If publishing year is not given
+        formValid = false;
+        tempErrors['publishingYear']='Please select publishing year';
+    }
+    else if(!pYearPttern.test(publishingYear)){
+        formValid=false;
+        tempErrors['publishingYear']='Year must be 4 digit';
+    }
 
-        if (!name) { //If name is not given
-            formValid = false;
-            tempErrors['name'] = 'Publisher Name cannot be empty';
-        }
-        if (!bname) { //If book name is not given
-            formValid = false;
-            tempErrors['bname'] = 'Book Name cannot be empty';
-        }
-        if (!price) { //If price is not given
-            formValid = false;
-            tempErrors['price'] = 'Book price cannot be empty';
-        }
-        if (!authorName) { //If auther name is not given
-            formValid = false;
-            tempErrors['authorName'] = 'Auther Name cannot be empty';
-        }
-        if (!publishingYear) { //If publishing year is not given
-            formValid = false;
-            tempErrors['publishingYear'] = 'Please select publishing year';
-        }
-        if (!bookLanguage) { //If bookLanguage is not given
-            formValid = false;
-            tempErrors['bookLanguage'] = 'Please select bookLanguage';
-        }
-        if (!bookCategory) { //If bookCategory is not given
-            formValid = false;
-            tempErrors['bookCategory'] = 'Please select bookCategory';
-        }
-        if (!bookLink) { //If bookLink is not given
-            formValid = false;
-            tempErrors['bookLink'] = 'Please enter bookLink';
-        }
-        if (!coverimg) { //If bookLink is not given
-            formValid = false;
-            tempErrors['coverimg'] = 'Please enter coverimg';
-        }
+    if(!bookLanguage){ //If bookLanguage is not given
+        formValid = false;
+        tempErrors['bookLanguage']='Please select bookLanguage';
+    }
+    else if(!bookLanguagePattern.test(bookLanguage)){
+        formValid=false;
+        tempErrors['bookLanguage']='Book language must be Min 2 charecters Max 25 charectersr';
+    }
 
-        this.setState({
-            errors: tempErrors
-        });
+    if(!bookCategory){ //If bookCategory is not given
+        formValid = false;
+        tempErrors['bookCategory']='Please select bookCategory';
+    }
+    if(!bookLink){ //If bookLink is not given
+        formValid = false;
+        tempErrors['bookLink']='Please enter bookLink';
+    }
+    if(!coverimg){ //If bookLink is not given
+        formValid = false;
+        tempErrors['coverimg']='Please enter coverimg';
+    }
+   
+    this.setState({
+        errors: tempErrors
+    });
 
         return formValid;
     }
