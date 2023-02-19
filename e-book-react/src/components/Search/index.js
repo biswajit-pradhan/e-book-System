@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { SearchByBookNamePost } from "../../action/Search";
 import { SearchByAuthorNamePost } from "../../action/Search";
 import { SearchByPublisherNamePost } from "../../action/Search";
+import GetBook from "../getBook";
 
 import "./style.css";
 export class Search extends Component {
@@ -10,6 +11,7 @@ export class Search extends Component {
         super(props);
 
         this.state = {
+            bid:0,
             errors: {},
             msg: "",
             isLoggedIn: false
@@ -69,7 +71,11 @@ export class Search extends Component {
                                         <td>{b.publishingYear}</td>
                                         <td>{b.bookLanguage}</td>
                                         <td>{b.bookCategory}</td>
-                                        <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit">Get Book</button></td>
+                                        <td>
+
+                                        <button type="button" className="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"onClick={() => this.setState({bid: b})}>Get Book</button>
+                                    </td>
+                                    <td><GetBook bid={this.state.bid} /></td>
                                     </tr>
                                 ))
                             }

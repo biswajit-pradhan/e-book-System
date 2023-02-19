@@ -15,6 +15,7 @@ import Home from './components/Home';
 import PublisherDashBord from './components/Publisher/PublisherDashBord';
 import Terms from "./components/Terms";
 import Contact from './components/Contact';
+import ReaderBook from './components/ReaderBook';
 
 function App() {
   return (
@@ -35,7 +36,9 @@ function App() {
             <Route path="/logout" element={<Logout/>} />
             <Route path="/terms" element={<Terms/>} />
             <Route path="/contact" element={<Contact/>} />
+            <Route path="/readerbook" element={<ReaderBook/>} />
           </Routes> 
+          {/* <ReaderBook/> */}
         </div>
         <footer className="footer--pin">
           <Footer />

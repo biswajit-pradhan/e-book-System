@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getBooksDataByReaderId } from "../../action/ReaderBook";
+import "./style.css";
 
 export class ReaderBook extends Component {
   constructor(props) {
@@ -9,28 +10,54 @@ export class ReaderBook extends Component {
   }
 
   componentDidMount() {
-    this.props.getBooksDataByReaderId();
+    this.props.getBooksDataByReaderId(localStorage.getItem('userName'));
+    // this.props.getBooksDataByReaderId(41);
   }
 
   render() {
-    const { bookData } = this.props;
     return (
       <div>
-        <table>
-          <tbody>
-            {this.props.bookData.map((book, index) => (
-              <tr key={book.id}>
-                <td>
-                  <h6>{index + 1}. {book.name}</h6>
-                  <p>{book.assignedDate}</p>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <h1>My Book List</h1>
+          <table className="table table-dark table-hover">
+              <thead>
+                  <tr>
+                      <th scope="col">SlNo</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">Book View</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Author Name</th>
+                      <th scope="col">AssignedDate</th>
+                      <th scope="col">BorrowingDays</th>
+                      <th scope="col">LastDate</th>
+                      <th scope="col">Read Now</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {
+                      this.props.bookData.map((b, index) => (
+
+                          <tr key={b.id}>
+                              <th scope="row" key={b.id}> {index + 1}</th>
+                              <td>{b.id}</td>
+                              <td><img src={require('../../coverimages/' + b.book.coverimg)} width={180} height={200} alt="img here"></img></td>
+                              <td>{b.book.name}</td>
+                              <td>{b.book.price}</td>
+                              <td>{b.book.authorName}</td>
+                              <td>{b.assignedDate}</td>
+                              <td>{b.borrowingDays}</td>
+                              <td>{b.lastDate}</td>
+                              <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit">READ</button></td>
+                          </tr>
+                      ))
+                  }
+              </tbody>
+          </table>
       </div>
-    );
-  }
+
+  )
+};
+  
 }
 
 function mapStateToProps(state) {
