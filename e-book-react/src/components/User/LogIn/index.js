@@ -90,6 +90,7 @@ export class Login extends Component {
       }
   
       handleValidation(){
+        const userNamePattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           let userName = this.state.user.userName;
           let password = this.state.user.password; 
           let tempErrors={}
@@ -97,6 +98,9 @@ export class Login extends Component {
           if(!userName){ //If name is not given
               formValid = false;
               tempErrors['userName']='userName cannot be empty';
+          }else if(!userNamePattern.test(userName)){
+               formValid = false;
+              tempErrors['userName']='UserName not vallid';
           }
           if(!password){ //If password is not given
               formValid = false;

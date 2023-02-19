@@ -22,7 +22,7 @@ export class AllBook extends Component {
                 <h1>All Books</h1>
                 
                 <div className="col-lg-9">
-                    <table className="table">
+                    <table className="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
