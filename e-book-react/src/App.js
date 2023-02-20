@@ -38,7 +38,6 @@ function App() {
             <Route path="/contact" element={<Contact/>} />
             <Route path="/readerbook" element={<ReaderBook/>} />
           </Routes>  */}
-          {/* <ReaderBook/> */}
         </div>
         <footer className="footer--pin">
           <Footer />
