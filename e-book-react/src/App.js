@@ -24,7 +24,7 @@ function App() {
 
         <div className="content-container">
           <Navbar />
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/books" element={<Book />} />
@@ -37,8 +37,7 @@ function App() {
             <Route path="/terms" element={<Terms/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/readerbook" element={<ReaderBook/>} />
-          </Routes> 
-          {/* <ReaderBook/> */}
+          </Routes>  */}
         </div>
         <footer className="footer--pin">
           <Footer />
