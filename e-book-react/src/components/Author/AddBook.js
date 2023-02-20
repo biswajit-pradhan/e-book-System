@@ -170,9 +170,11 @@ handleValidation(){
     let bookCategory = this.state.book.bookCategory;
     let price = this.state.book.price;
     let bookLink= this.state.book.bookLink;
+    let coverimg=this.state.book.coverimg;
    
-    const namePattern=/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+    const namePattern=/^[a-zA-Z.'\s]{2,25}$/;
     const yearPattern=/^[12][0-9]{3}$/;
+    
 
     let tempErrors={}
     let formValid = true; 
@@ -229,11 +231,12 @@ handleValidation(){
     
     if(!bookLink){ //If book category is not given
         formValid = false;
-        tempErrors['bookLink']='Please upload file';}
-        else if(!namePattern.test(bookLink)){
+        tempErrors['bookLink']='Please provide link';}
+        
+        if(!coverimg){ //If image is not given
             formValid = false;
-            tempErrors['bookLink']='String must be at least 2 and maximum 25 characters';
-        }
+            tempErrors['bookLink']='Please provide image';}
+            
     this.setState({
         errors: tempErrors
     });
