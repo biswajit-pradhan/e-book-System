@@ -1,3 +1,4 @@
+// This function fetches books published by a given username from the API.
 export const publisherBooks= (username) => (dispatch) =>{
     fetch('http://localhost:8080/api/reader/booksByPublisherName/'+username)
     .then(response=> response.json())
@@ -5,7 +6,7 @@ export const publisherBooks= (username) => (dispatch) =>{
             type: 'BOOK_BY_PUBL_NAME',
             payload: data})
          )
-};     
+};
 
 export const booksOnRent= (userName) => (dispatch) =>{
     fetch('http://localhost:8080/api/publisher/getBooksOnRentByPublisherName/'+ userName)

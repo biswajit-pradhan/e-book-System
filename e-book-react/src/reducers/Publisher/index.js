@@ -2,6 +2,7 @@ const initialState ={
     list:[]
     
 };
+
 const publbook =(state = initialState, action) =>{
     if(action.type === 'BOOK_BY_PUBL_NAME'){
         return { ...state, list : action.payload}
