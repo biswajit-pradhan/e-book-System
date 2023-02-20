@@ -1,6 +1,7 @@
 const initialState ={
     list:[]
 };
+//by action type it gets the data from action as payload abd and change the cloned initial state acc. to payload
 const search =(state = initialState, action) =>{
     if(action.type === 'SEARCH_BOOK_BY_BOOK_NAME'){
         return { ...state, list : action.payload}

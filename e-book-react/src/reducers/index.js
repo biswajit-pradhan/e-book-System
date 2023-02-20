@@ -12,6 +12,7 @@ import search from "./Search";
 import readerBook from "./ReaderBook"
 import getBooksDataByReaderId from "./ReaderBook/getBooksDataByReaderId"
 import getbookbyid from "./getbook";
+//It is combined reducer whaere all the reducers combine and get called in to store
 export default combineReducers({getBooksDataByReaderId,book,authorReducer,publbook,allPublisher,allAuthor,userSignUp,login,search,readerBook,alllatestBook,getbookbyid})
 
 

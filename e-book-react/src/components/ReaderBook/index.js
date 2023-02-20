@@ -13,6 +13,9 @@ export class ReaderBook extends Component {
     this.props.getBooksDataByReaderId(localStorage.getItem('userName'));
     // this.props.getBooksDataByReaderId(41);
   }
+  handleReadButtonClick = (url) => {
+    window.open(url, '_blank');
+  };
 
   render() {
     return (
@@ -47,7 +50,7 @@ export class ReaderBook extends Component {
                               <td>{b.assignedDate}</td>
                               <td>{b.borrowingDays}</td>
                               <td>{b.lastDate}</td>
-                              <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit">READ</button></td>
+                              <td><button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={() => this.handleReadButtonClick(b.book.bookLink)}>READ</button></td>
                           </tr>
                       ))
                   }
