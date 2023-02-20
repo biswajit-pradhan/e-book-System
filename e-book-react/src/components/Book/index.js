@@ -6,14 +6,15 @@ import "./style.css";
 
 
 class Book extends Component {
+    //constructor here define and declare the state
     constructor(props) {
         super(props);
-
+        //state defination
         this.state = {
              bid:0
         };
     }
-
+//here componentdidmount prepare data
     componentDidMount() {
         this.props.allBooks();
 
@@ -23,7 +24,7 @@ class Book extends Component {
         console.log(b)
 
     }
-
+    //we render here with html for display on screen
     render() {
 
         return (
@@ -45,7 +46,7 @@ class Book extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {// mapping is used here for getting data in itereation
                             this.props.bookList.list.map((b, index) => (
 
                                 <tr key={b.id}>
@@ -61,7 +62,7 @@ class Book extends Component {
                       
                                 
                                     <td>
-
+                                        {/* //used modal for getting the screen hover all other screen */}
                                         <button type="button" className="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"onClick={() => this.setState({bid: b})}>Get Book</button>
                                     </td>
                                     <td><GetBook bid={this.state.bid} /></td>
@@ -77,11 +78,11 @@ class Book extends Component {
     };
 
 }
-
+//function in the Redux library for managing state in a React application
 function mapStateToProps(state) {
     return {
         bookList: state.book
     };
 }
-
+//takes in the Redux store state as an argument and returns an object that maps the relevant parts
 export default connect(mapStateToProps, { allBooks })(Book);

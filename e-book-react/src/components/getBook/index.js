@@ -6,14 +6,34 @@ class GetBook extends Component {
         super(props);
         this.state = {
             bookDetails: null,
-            borrowDays: ''
+            borrowDays: '',
+            successMessage: ''
         };
     }
-
+    //handleing event called due to click on button
     handleInputChange = (event) => {
-        this.setState({ borrowDays: event.target.value });
+        const value = event.target.value;
+        // Validating the input value here
+        if (!value || /^\d+$/.test(value)) {
+            this.setState({ borrowDays: value });
+        }
+    }
+
+    handleBuyNowClick = () => {
+        const { bid, GetBookPost } = this.props;
+        const { borrowDays } = this.state;
+        if (!borrowDays || !/^\d+$/.test(borrowDays)) {
+            // it will show error message only when input is not valid
+            this.setState({ successMessage: 'Please enter a valid number of days.' });
+            return;
+        }
+        // Call the action to buy the book
+        GetBookPost(bid.id, localStorage.getItem('userName'), borrowDays);
+        // Show success message
+        this.setState({ successMessage: 'Book bought successfully.' });
     }
     render() {
+        const { successMessage } = this.state;
         return (
             <div>
 
@@ -29,7 +49,7 @@ class GetBook extends Component {
                                 <div className="card mb-3" style={{ maxWidth: '540px' }}>
                                     <div className="row g-0">
                                         {/* <div className="col-md-4">
-                                            <img src={require(`../../coverimages/${this.props.bid.coverimg}`)} className="img-fluid rounded-start" alt="no img" />
+                                            <img src={require(`../../coverimages/${this.props.bid.coverimg}`)} className="img-fluid rounded-start" alt="no_img" />
                                         </div> */}
                                         <div className="col-md-8">
                                             <div className="card-body">
@@ -44,10 +64,11 @@ class GetBook extends Component {
                                 </div>
                                 <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
                                 placeholder="Enter number of days you wanna to borrow" value={this.state.borrowDays} onChange={this.handleInputChange}></input>
+                                {successMessage && <div className="text-success">{successMessage}</div>}
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" onClick={() => this.props.GetBookPost(this.props.bid.id, localStorage.getItem('userName'),this.state.borrowDays)}>Buy Now</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleBuyNowClick}>Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -57,11 +78,13 @@ class GetBook extends Component {
         );
     }
 }
+//function in the Redux library for managing state in a React application
 function mapStateToProps(state) {
     return {
         bookdetails: state.getbookbyid
     };
 }
+//takes in the Redux store state as an argument and returns an object that maps the relevant parts
 export default connect(mapStateToProps, { GetBookPost })(GetBook);
 
 
