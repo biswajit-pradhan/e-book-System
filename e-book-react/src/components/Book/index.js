@@ -6,6 +6,7 @@ import "./style.css";
 
 
 class Book extends Component {
+    //Explaining Life Cycle Hook here
     //constructor here define and declare the state
     constructor(props) {
         super(props);
@@ -65,6 +66,7 @@ class Book extends Component {
                                         {/* //used modal for getting the screen hover all other screen */}
                                         <button type="button" className="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"onClick={() => this.setState({bid: b})}>Get Book</button>
                                     </td>
+                                    {/* bid is passed down to the GetBook component as a prop. */}
                                     <td><GetBook bid={this.state.bid} /></td>
 
                                 </tr>
