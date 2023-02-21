@@ -64,10 +64,13 @@ class GetBook extends Component {
                                 </div>
                                 <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
                                 placeholder="Enter number of days you wanna to borrow" value={this.state.borrowDays} onChange={this.handleInputChange}></input>
+                                {/* conditional render statement in JSX */}
+                                {/* the succesMessage will only get called only when successMessage is truthy */}
                                 {successMessage && <div className="text-success">{successMessage}</div>}
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                {/* onclicking the button it will call handleBuyNowClick function */}
                                 <button type="button" className="btn btn-primary" onClick={this.handleBuyNowClick}>Buy Now</button>
                             </div>
                         </div>

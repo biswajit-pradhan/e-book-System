@@ -28,17 +28,20 @@ export class Search extends Component {
                     <h1>Search a Book</h1>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="ByBookName" aria-label="Search" 
+                        //fetching the book from baatbase by BookName
                         onChange={(e) => this.props.SearchByBookNamePost(e.target.value).catch((errors) =>
                             this.setState({ msg: "errors.response.data.msg" }))} />
                         <span style={{ color : 'red'}}>{this.state.msg}</span> 
                         <button className="btn btn-primary btn-sm" type="submit">Search</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input className="form-control mr-sm-2" type="search" placeholder="ByAutorName" aria-label="Search" 
+                        //fetching the book from baatbase by AuthorName
                         onChange={(e) => this.props.SearchByAuthorNamePost(e.target.value).catch((errors) =>
                   this.setState({ msg: "errors.response.data.msg" }))} />
                         <button className="btn btn-primary btn-sm" type="submit">Search</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input className="form-control mr-sm-2" type="search" placeholder="ByPublisherName" aria-label="Search" 
+                        //fetching the book from baatbase by PublisherName
                         onChange={(e) => this.props.SearchByPublisherNamePost(e.target.value).catch((errors) =>
                   this.setState({ msg: "errors.response.data.msg" }))} />
                         <button className="btn btn-primary btn-sm" type="submit">Search</button>
