@@ -2,11 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../../action/User/LogIn";
-import AuthorDashboard from "../../Author/AuthorDashboard";
-import Reader from "../../Home";
-import PublisherDashBord from "../../Publisher/PublisherDashBord";
-import Search from "../../Search";
-import SignUp from "../SignUp";
+import Home from "../../Home";
 import "./style.css";
 
 export class Login extends Component {
@@ -21,7 +17,7 @@ export class Login extends Component {
           errors: {},
           msg: '',
           
-          redirect: '/publisher',
+          redirect: '/',
           isLoggedIn: false
       };
     }
@@ -32,7 +28,7 @@ export class Login extends Component {
        
                    
       return (
-         this.state.isLoggedIn?<div ><PublisherDashBord /></div>  : 
+         this.state.isLoggedIn?<div ><Home /></div>  : 
         <div id="login">
             <h3 className="text-center text-white pt-5">Login Form</h3>
             <div className="container">

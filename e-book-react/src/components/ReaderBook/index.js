@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getBooksDataByReaderId } from "../../action/ReaderBook";
+import LogIn from "../User/LogIn";
 import "./style.css";
 
 export class ReaderBook extends Component {
@@ -11,7 +12,12 @@ export class ReaderBook extends Component {
 
   componentDidMount() {
     this.props.getBooksDataByReaderId(localStorage.getItem('userName'));
-    // this.props.getBooksDataByReaderId(41);
+    let username = localStorage.getItem('userName');
+
+    if(username === null || username === undefined) 
+          this.setState({isLoggedIn: false})
+    else
+          this.setState({isLoggedIn: true})
   }
   handleReadButtonClick = (url) => {
     window.open(url, '_blank');
@@ -19,6 +25,7 @@ export class ReaderBook extends Component {
 
   render() {
     return (
+      !this.state.isLoggedIn?<div ><LogIn /></div>  :
       <div>
           <h1>My Book List</h1>
           <table className="table table-dark table-hover">
